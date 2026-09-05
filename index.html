@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recno - Record your work</title>
+  <meta name="description" content="Recno files jobsite photos to the right job and turns a day's work into a report you can send. Built for small contractors. Works offline.">
+  <meta name="theme-color" content="#f5f4f2">
+  <link rel="canonical" href="https://gsl0001.github.io/recno/">
+  <meta property="og:title" content="Recno - Record your work">
+  <meta property="og:description" content="Jobsite photos filed to the right job, and reports you can send the same day. Built for small contractors.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Recno">
+  <meta property="og:url" content="https://gsl0001.github.io/recno/">
+  <meta property="og:image" content="https://gsl0001.github.io/recno/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Recno - every photo, filed to the right job.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/01-sifter.webp" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap topbar__in">
+      <a class="mark" href="./">Recno<span class="mark__dot" aria-hidden="true"></span></a>
+      <nav class="topbar__links" aria-label="Sections">
+        <a href="#sifter">Sifter</a>
+        <a href="#capture">Capture</a>
+        <a href="#reports">Reports</a>
+        <a href="#crew">Crew</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <a class="btn btn--sm" href="https://apps.apple.com/us/app/id6785280739">Get it on the App Store</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ================= HERO ================= -->
+    <section class="wrap hero">
+      <div class="hero__grid">
+        <div>
+          <p class="eyebrow">For contractors who take the photos themselves</p>
+          <h1 class="display">Every photo, filed to the <span class="accent">right job.</span></h1>
+          <p class="lead">Recno records jobsite work the way it actually happens: you shoot, it files. Then it finds the work photos already buried in your camera roll and turns the day into a report you can send before you leave the truck.</p>
+
+          <p class="hero__cta">
+            <a class="btn" href="https://apps.apple.com/us/app/id6785280739">Download on the App Store</a>
+          </p>
+          <p class="signup__hint">Free to download. Recno Pro unlocks Sifter and report export.</p>
+
+          <p class="hero__meta">
+            <span>iPhone</span>
+            <span>Works offline</span>
+            <span>No account to create</span>
+          </p>
+        </div>
+
+        <div class="hero__media">
+          <div class="shot">
+            <div class="phone phone--lg">
+              <span class="phone__glow" aria-hidden="true"></span>
+              <img src="assets/01-sifter.webp" width="560" height="1213" alt="The Recno Sifter screen showing photos found near a saved jobsite, queued for review." fetchpriority="high">
+            </div>
+            <p class="shot__cap"><b>Sifter</b>Photos found near a saved job, waiting for review</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STRIP ================= -->
+    <section class="wrap" aria-label="At a glance">
+      <div class="strip">
+        <div class="stat reveal">
+          <p class="stat__num"><span>0</span></p>
+          <p class="stat__label">Accounts, logins or servers to set up</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat__num">3</p>
+          <p class="stat__label">Report formats: PDF, HTML and CSV</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat__num">Offline</p>
+          <p class="stat__label">Capture, file and report with no signal</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SIFTER ================= -->
+    <section class="band band--dark" id="sifter">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow eyebrow--dark">01 / The photos you already took</p>
+          <h2 class="display">Your camera roll is the jobsite record. It just isn't sorted.</h2>
+          <p class="lead">Sifter looks through the photos already on your phone, matches the ones taken near a saved job, and stacks them for you to approve. Nothing is filed without you saying yes.</p>
+        </div>
+
+        <div class="split">
+          <div>
+            <div class="scan" id="scan">
+              <div class="scan__top">
+                <span class="scan__title">Camera roll &mdash; last 30 days</span>
+                <button class="btn btn--sm" type="button" data-scan-run>Run scan</button>
+              </div>
+              <div class="scan__grid" id="scan-grid" aria-hidden="true"></div>
+              <p class="scan__out" role="status" aria-live="polite" aria-atomic="true">
+                <span class="scan__count" data-scan-count>0</span>
+                <span data-scan-note>Press run scan</span>
+              </p>
+            </div>
+            <p class="section-note">A demonstration of how matching works. Your photos never leave the phone.</p>
+          </div>
+
+          <div>
+            <ul class="points">
+              <li>
+                <strong>Matched by where you stood</strong>
+                <p>Photos taken inside a saved job's radius get pulled out of the noise. Lunch, receipts and the dog stay behind.</p>
+              </li>
+              <li>
+                <strong>You approve every match</strong>
+                <p>Matches sit in a review queue. Approve them into the job, or discard them and Recno stops offering them.</p>
+              </li>
+              <li>
+                <strong>It tells you when a stack is ready</strong>
+                <p>Recno lets you know when new matches are waiting. Turn the alert off in Settings and it stays quiet.</p>
+              </li>
+              <li>
+                <strong>Optional cleanup</strong>
+                <p>Filing copies the photo into the job. You can switch it to move instead, clearing the original from your gallery &mdash; that one is off unless you turn it on.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAPTURE ================= -->
+    <section class="band" id="capture">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">02 / Shooting on site</p>
+          <h2 class="display">Proof, stamped as you shoot.</h2>
+          <p class="lead">Open the camera and Recno already knows which job you are standing on. Every shot lands in that job with the details burned in, so a photo still means something six months later.</p>
+        </div>
+
+        <div class="split">
+          <div class="split__media">
+            <div class="builder">
+              <div class="plate">
+                <div class="plate__stamp" id="stamp-out">
+                  <div data-stamp="project"><span class="k">Job</span> Henderson Kitchen</div>
+                  <div data-stamp="date"><span class="k">When</span> Aug 14, 2026 &middot; 7:42 am</div>
+                  <div data-stamp="gps"><span class="k">Where</span> 47.6062 N, 122.3321 W</div>
+                  <div data-stamp="weather"><span class="k">Sky</span> 52 &deg;F &middot; Light rain</div>
+                </div>
+              </div>
+              <div class="chips" role="group" aria-label="Photo stamp fields">
+                <button class="chip" type="button" data-stamp-toggle="project" aria-pressed="true">Job name</button>
+                <button class="chip" type="button" data-stamp-toggle="date" aria-pressed="true">Date and time</button>
+                <button class="chip" type="button" data-stamp-toggle="gps" aria-pressed="true">Coordinates</button>
+                <button class="chip" type="button" data-stamp-toggle="weather" aria-pressed="true">Weather</button>
+              </div>
+              <p class="section-note">Tap a field to see what the stamp carries. These are the same switches you get in the app.</p>
+            </div>
+          </div>
+
+          <div>
+            <ul class="points">
+              <li>
+                <strong>The right job, preselected</strong>
+                <p>Recno matches your position to a saved job and files the shot there. Standing somewhere new? Pick the job yourself.</p>
+              </li>
+              <li>
+                <strong>Draw on it while it is fresh</strong>
+                <p>Circle the crack, arrow the leak, drop a text label. Markups carry through into the reports you send.</p>
+              </li>
+              <li>
+                <strong>Notes and voice memos</strong>
+                <p>Add a note, or record a voice memo when your hands are dirty and typing isn't happening.</p>
+              </li>
+              <li>
+                <strong>Categories, favorites, video</strong>
+                <p>Tag a shot as demo, rough-in, damage or done. Star the ones that matter. Video works the same way.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REPORTS ================= -->
+    <section class="band band--paper" id="reports">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">03 / What you send</p>
+          <h2 class="display">The day, on one page.</h2>
+          <p class="lead">Pick what goes in and Recno builds it. Send the PDF to the homeowner, the CSV to your bookkeeper, and keep the history so you can re-send any of it later.</p>
+        </div>
+
+        <div class="split">
+          <div>
+            <div class="report" id="report">
+              <div class="report__bar" role="group" aria-label="Report format">
+                <button class="tab" type="button" data-fmt="pdf" aria-pressed="true">PDF</button>
+                <button class="tab" type="button" data-fmt="html" aria-pressed="false">HTML</button>
+                <button class="tab" type="button" data-fmt="csv" aria-pressed="false">CSV</button>
+              </div>
+
+              <div class="sheet" id="sheet">
+                <div class="sheet__head">
+                  <div>
+                    <p class="sheet__logo">Fair Oak Builders</p>
+                    <p class="sheet__meta">Daily report &middot; Henderson Kitchen</p>
+                  </div>
+                  <p class="sheet__meta sheet__meta--right">Aug 14, 2026<br>Prepared by M. Reyes</p>
+                </div>
+
+                <div class="sheet__block" data-block="photos">
+                  <p class="sheet__label">Photos &mdash; 8 of 8</p>
+                  <div class="sheet__photos">
+                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
+                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
+                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
+                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
+                  </div>
+                </div>
+
+                <div class="sheet__block" data-block="notes">
+                  <p class="sheet__label">Notes</p>
+                  <p class="sheet__note">Rough-in inspected and signed off. Water damage behind the sink base is worse than quoted &mdash; photographed for the change order.</p>
+                </div>
+
+                <div class="sheet__block" data-block="hours">
+                  <p class="sheet__label">Crew hours</p>
+                  <div class="sheet__rows">
+                    <div class="sheet__row"><span>M. Reyes</span><b>8.0 h</b></div>
+                    <div class="sheet__row"><span>J. Okafor</span><b>7.5 h</b></div>
+                    <div class="sheet__row"><span>Day total</span><b>15.5 h</b></div>
+                  </div>
+                </div>
+
+                <div class="sheet__block" data-block="punch">
+                  <p class="sheet__label">Punch list</p>
+                  <div class="sheet__rows">
+                    <div class="sheet__row"><span>Replace sink base panel</span><b>Open</b></div>
+                    <div class="sheet__row"><span>Cap stub-out</span><b>Done</b></div>
+                  </div>
+                </div>
+
+                <pre class="sheet__csv" data-block="csv" hidden>date,project,worker,hours,cost
+2026-08-14,Henderson Kitchen,M. Reyes,8.0,392.00
+2026-08-14,Henderson Kitchen,J. Okafor,7.5,337.50</pre>
+
+                <p class="sheet__empty" data-empty hidden>Nothing selected</p>
+              </div>
+
+              <div class="report__foot">
+                <span data-report-foot>PDF &middot; 8 photos &middot; ready to share</span>
+                <span>Saved to report history</span>
+              </div>
+            </div>
+
+            <div class="chips" role="group" aria-label="Report sections">
+              <button class="chip" type="button" data-block-toggle="photos" aria-pressed="true">Photos</button>
+              <button class="chip" type="button" data-block-toggle="notes" aria-pressed="true">Notes</button>
+              <button class="chip" type="button" data-block-toggle="hours" aria-pressed="true">Crew hours</button>
+              <button class="chip" type="button" data-block-toggle="punch" aria-pressed="true">Punch list</button>
+            </div>
+            <p class="section-note">Toggle sections and formats to see how a report is put together.</p>
+          </div>
+
+          <div>
+            <ul class="points">
+              <li>
+                <strong>Your company on the page</strong>
+                <p>Add your logo and company details once. Every report goes out looking like it came from your office.</p>
+              </li>
+              <li>
+                <strong>Report history</strong>
+                <p>Reports you build are saved, so you can re-send the one from three weeks ago without rebuilding it.</p>
+              </li>
+              <li>
+                <strong>An end-of-day nudge</strong>
+                <p>Optional reminder that opens the day's report with the busiest job already selected, so it goes out the same day.</p>
+              </li>
+              <li>
+                <strong>Choose the audience</strong>
+                <p>A client-facing summary and an internal record need different things in them. Choose per report.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CREW ================= -->
+    <section class="band" id="crew">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">04 / Hours and the day</p>
+          <h2 class="display">Who was on site, and for how long.</h2>
+          <p class="lead">Clock the crew in at the job, watch the day build itself as a timeline, and pull the hours out as a costed sheet when it is time to invoice.</p>
+        </div>
+
+        <div class="split split--reverse">
+          <div class="split__media">
+            <div class="shot">
+              <div class="phone">
+                <img src="assets/07-daily-log.webp" width="560" height="1213" alt="The Recno daily log, showing a timeline of photos and crew hours for one day." loading="lazy">
+              </div>
+              <p class="shot__cap"><b>Daily log</b>One day, photos and hours in order</p>
+            </div>
+          </div>
+
+          <div>
+            <ul class="points">
+              <li>
+                <strong>Crew time clock</strong>
+                <p>Clock people in and out against the job. Recno can use the jobsite radius so the right job is already selected.</p>
+              </li>
+              <li>
+                <strong>Timesheets and labor cost</strong>
+                <p>Hours roll up by person, by job and by month, with a costed export when you need to bill or run payroll.</p>
+              </li>
+              <li>
+                <strong>The daily log</strong>
+                <p>Photos, hours and site notes laid out in the order they happened. Scroll a day and see exactly what went on.</p>
+              </li>
+              <li>
+                <strong>Clock alerts</strong>
+                <p>A heads-up if the crew is still clocked in long after the day should have ended, so hours don't run all night.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EVERYTHING ELSE ================= -->
+    <section class="band band--paper">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">05 / The rest of it</p>
+          <h2 class="display">The parts you find out you need.</h2>
+        </div>
+
+        <div class="cards">
+          <div class="card reveal">
+            <h3>Every job, mapped</h3>
+            <p>Save each job with its address and radius. See them all on a map, sort by what is active, and archive the finished ones.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Search that works</h3>
+            <p>Search notes, jobs and reports. Filter a job's photos by category, date or favorite when you need the one shot.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Before and after</h3>
+            <p>Put the demo shot next to the finished shot side by side. The comparison sells the work better than a paragraph.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Punch list</h3>
+            <p>Track what is still open on a job, tick items off as they are done, and drop the list into a report.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Automatic backup</h3>
+            <p>On by default. Backups go to your own private iCloud container, and Recno keeps a copy on the phone when iCloud is not reachable. Switch it off any time.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Built for no bars</h3>
+            <p>Basements, new builds, rural lots. Capture, filing and reports all work with no connection, because the records live on the phone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section class="band band--dark" id="privacy">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow eyebrow--dark">06 / Where your work lives</p>
+          <h2 class="display">On your phone. Not on our server.</h2>
+          <p class="lead">Recno has no accounts and no sync service, because there is nothing on our side to sync to. Here is what leaves the device, and when.</p>
+        </div>
+
+        <div class="truths">
+          <div class="truth">
+            <h3>Your records</h3>
+            <p>Photos, notes, hours and reports are stored on the device. We do not receive them and cannot read them.</p>
+          </div>
+          <div class="truth">
+            <h3>Backups</h3>
+            <p>With automatic backup on, archives go to Recno's own private iCloud container &mdash; between you and Apple, not through us.</p>
+          </div>
+          <div class="truth">
+            <h3>Weather stamps</h3>
+            <p>On out of the box: coordinates go to Open-Meteo to fetch the conditions for a shot. Switch weather off in Settings and nothing is sent.</p>
+          </div>
+          <div class="truth">
+            <h3>Addresses and places</h3>
+            <p>Searching a job address sends what you type, and roughly where you are, to OpenStreetMap. Naming a job from your location asks Apple for the street address.</p>
+          </div>
+          <div class="truth">
+            <h3>Subscriptions</h3>
+            <p>The subscription SDK checks your entitlement with RevenueCat when the app starts. It never receives jobsite content.</p>
+          </div>
+          <div class="truth">
+            <h3>Counting installs</h3>
+            <p>An anonymous activation signal you can opt into, off unless you turn it on. No profile, no tracking, no ads anywhere in the app.</p>
+          </div>
+        </div>
+
+        <p class="section-note">Full detail in the <a href="privacy/">privacy policy</a> and <a href="delete-data/">delete data</a> pages.</p>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section class="band" id="pricing">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">07 / What it costs</p>
+          <h2 class="display">Free to record. Pro to sift and send.</h2>
+          <p class="lead">Recno Pro is an auto-renewing subscription through the App Store. No account to create either way.</p>
+        </div>
+
+        <div class="plan">
+          <div class="plan__item">
+            <p class="plan__k">Without Pro</p>
+            <p>Capture and file photos, the daily log, crew time clock, punch lists and automatic backup.</p>
+          </div>
+          <div class="plan__item">
+            <p class="plan__k">Recno Pro</p>
+            <p><strong>$14.99 a month or $99.99 a year.</strong> Adds Sifter and report export &mdash; PDF, HTML and CSV.</p>
+          </div>
+          <div class="plan__item">
+            <p class="plan__k">Free trial</p>
+            <p>A 14-day free trial comes with the annual plan, when Apple marks your account eligible for it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GET IT ================= -->
+    <section class="band band--paper" id="get">
+      <div class="wrap join">
+        <p class="eyebrow">On the App Store</p>
+        <h2 class="display">Get it on your phone.</h2>
+        <p class="lead">Recno is out. Download it, open a job, and start shooting &mdash; there is no account to create and nothing to set up first.</p>
+        <p class="hero__cta"><a class="btn" href="https://apps.apple.com/us/app/id6785280739">Download on the App Store</a></p>
+        <p class="signup__hint">iPhone, iOS 16 and later. Questions? <a href="mailto:gsl456789@gmail.com">gsl456789@gmail.com</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__grid">
+        <div>
+          <a class="mark" href="./">Recno<span class="mark__dot" aria-hidden="true"></span></a>
+          <p class="section-note">Record your work</p>
+        </div>
+        <nav class="foot__links" aria-label="Site">
+          <a href="privacy/">Privacy</a>
+          <a href="terms/">Terms</a>
+          <a href="support/">Support</a>
+          <a href="delete-data/">Delete Data</a>
+          <a href="mailto:gsl456789@gmail.com">gsl456789@gmail.com</a>
+        </nav>
+      </div>
+      <p class="foot__note">Recno is documentation support, not legal, insurance, accounting, or code-compliance advice. It does not guarantee payment, legal outcomes, insurance approval, code compliance, or dispute outcomes. &copy; 2026 Recno.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

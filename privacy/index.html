@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recno Privacy Policy</title>
+  <meta name="description" content="How Recno handles photos, location, reports, and local records.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="../">Recno</a>
+      <div class="nav-links">
+        <a href="../terms/">Terms</a>
+        <a href="../support/">Support</a>
+        <a href="../delete-data/">Delete Data</a>
+      </div>
+    </nav>
+    <article class="legal">
+      <h1>Recno Privacy Policy</h1>
+      <p><strong>Last updated:</strong> August 23, 2026</p>
+      <p>Recno is a local-first jobsite photo and report app for contractors. This policy describes the current app behavior and should be reviewed whenever new cloud, account, analytics, or payment features are added.</p>
+
+      <h2>Summary</h2>
+      <p>Recno uses photos, videos, location, project notes, labor records, Sifter matches, reports, and backups to help you organize jobsite documentation. Working data stays on your device. On iPhone, complete automatic backups are on by default: they go to your private iCloud Drive when iCloud is available and fall back to bounded on-device copies when it is not. You can turn automatic backup off in Settings. Recno cannot confirm that an archive finished uploading to Apple's servers, and on-device-only copies are lost if you delete or uninstall the app.</p>
+      <p>Recno does not sell your photos, location data, project records, labor entries, or report data.</p>
+
+      <h2>Information Recno Handles</h2>
+      <ul>
+        <li>Photos and videos you capture in the app.</li>
+        <li>Photos and videos you select or approve from your device library.</li>
+        <li>Project names, addresses, notes, categories, favorites, labor entries, report history, and backup files.</li>
+        <li>Device location while using the app, so Recno can detect the active jobsite and help match media to saved projects.</li>
+        <li>Local activation counters, such as project creation, photo logging, Sifter scans, and report exports.</li>
+      </ul>
+
+      <h2>Local-First Storage</h2>
+      <p>The current app stores records in local device storage and local files. Automatic backup is on by default and creates complete, portable ZIP archives; you can turn automatic backup off at any time in Settings. When iCloud is available, each archive is placed in your private iCloud Drive container and Apple performs the upload in the background. Recno can confirm only that an archive was written into the local iCloud container on your device — it cannot confirm that Apple's servers finished uploading it. When iCloud is unavailable, Recno falls back to bounded on-device copies stored on this iPhone only. Recno keeps the two newest automatic archives as restore points: the current one and the previous one. On-device-only copies that never reach iCloud are lost if you delete or uninstall the app. Recno does not add its own encryption to these archives; they rely on Apple's iCloud encryption. Turning on Advanced Data Protection in iOS Settings makes iCloud contents, including Recno archives, end-to-end encrypted so that only your own devices can read them.</p>
+      <p>This is backup storage, not live cloud sync. Recno does not currently provide team accounts, remote analytics, advertising SDKs, or server-side account storage, and does not receive your Apple ID or operate a server that can read these archives. It does use the limited remote services described below for weather, address lookups, and subscription validation.</p>
+      <p>Reports, backups, and shared photos leave the app only when you start an export, backup, save, or share action. Anyone you send files to may store, forward, or copy them outside Recno.</p>
+
+      <h2>Subscriptions</h2>
+      <p>Recno uses RevenueCat to validate and maintain App Store subscriptions. RevenueCat receives an anonymous app user identifier, App Store purchase, receipt, and subscription status, and limited device and store metadata solely for that purpose.</p>
+      <p>Your jobsite photos, videos, notes, project locations, crew and time records, and report contents are not sent to RevenueCat.</p>
+
+      <h2>Photo Library Access</h2>
+      <p>Recno asks for photo library access so Sifter can find media taken near saved project locations and offer it for review. Sifter queues possible matches for your approval. With photo permission granted, Sifter may also scan periodically in the background so new jobsite photos are ready for review; the scan itself runs on your device and any alerts are generated locally. Recno should not silently add every library photo to a project.</p>
+      <p>You can also manually import selected media when full-library scanning is not appropriate.</p>
+
+      <h2>Location Access</h2>
+      <p>Recno uses location to help detect which project site you are on and to match existing media to jobsites. Location is used for organizing job records and reports. Recno should not be marketed as silent worker monitoring.</p>
+      <p>Recno uses location only while the app is in use. It does not request background location or monitor jobsite exits after you leave the app.</p>
+      <p>Weather on photo stamps is on by default; you can turn it off in Settings. While it is on, Recno sends your location rounded to about four decimal places to Open-Meteo to fetch current weather. Open-Meteo does not receive your project names, photos, notes, labor records, or reports from Recno.</p>
+      <p>You can revoke location permission in system settings. Some features, including automatic project matching and Sifter, may stop working when location access is removed.</p>
+
+      <h2>Address Search</h2>
+      <p>When you search for an address while creating or editing a project, the text you type is sent to Apple's geocoding service and to OpenStreetMap's geocoding service to return matching suggestions. When the camera looks up the address of your current jobsite, your current coordinates are sent to Apple's geocoding service. Only the search text or coordinates are sent; your projects, photos, and other records are not. You can skip address search and enter coordinates or use your current location instead.</p>
+
+      <h2>Notifications</h2>
+      <p>Recno can send local reminders and alerts on your device — for example, when the Sifter finds jobsite photos near a saved project, or an end-of-day prompt to build your report. These notifications are generated on your device. Recno does not use remote push servers and does not send your data off the device to deliver them. You can turn alerts off in Settings or in your device notification settings.</p>
+
+      <h2>Support</h2>
+      <p>For support, contact <a href="mailto:gsl456789@gmail.com">gsl456789@gmail.com</a>.</p>
+
+      <h2>Data Deletion</h2>
+      <p>You can delete project records inside the app. Deleting a project removes its app records and related Sifter queue items from the local database.</p>
+      <p>Reports and backups that were saved or shared outside Recno may also exist in Files, Photos, email, messages, cloud drives, or client systems. Delete those copies from each place separately.</p>
+      <p>Uninstalling Recno removes local app data from the device according to operating system behavior. Automatic backups that reached your private iCloud Drive remain there until deleted. Recno's iCloud container is not browsable in the Files app, so these archives cannot be deleted from iCloud Drive itself; remove them in iOS Settings by tapping your name, then iCloud, then Manage Account Storage, then SitesLog, then Delete Data. The container is still listed under the app's former name, SitesLog. Deleting it removes every Recno backup at once, so restore one after reinstalling Recno first if you still need the records. On-device-only fallback copies that never reached iCloud are removed with the app and cannot be restored after uninstalling.</p>
+
+      <h2>Future Features</h2>
+      <p>If Recno adds cloud sync, accounts, team features, or remote analytics, this policy and the App Store / Google Play privacy declarations must be updated before those features are released. The App Store privacy label must be reviewed against RevenueCat and the exact release binary before submission.</p>
+    </article>
+  </main>
+</body>
+</html>
