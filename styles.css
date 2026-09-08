@@ -133,6 +133,27 @@ a { color: var(--safety-ink); }
 
 .eyebrow--dark { color: var(--safety-hi); }
 
+/* Section eyebrows carry real record data - job, temperature, hours on the
+   clock - instead of 01/02/03 numbering. These sections are topics, not a
+   sequence, and the whole product argument is that a record is worth nothing
+   without its context. The leading tick is the same mark the App Store cards
+   use, so the page and the store listing read as one thing. */
+.eyebrow--stamp {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.eyebrow--stamp::before {
+  content: "";
+  flex: none;
+  width: 3px;
+  height: 0.95em;
+  background: currentColor;
+  border-radius: 1px;
+  transform: translateY(0.08em);
+}
+
 /* The 0.95 line-height leaves the ink box slightly proud of the layout box;
    the padding/margin pair reserves that overhang so display type can never
    collide with the eyebrow above or the lead below. */
@@ -316,28 +337,6 @@ h2.display {
 
 /* ---------- phone + the stamp caption ---------- */
 
-.phone {
-  position: relative;
-  width: min(100%, 300px);
-  margin-inline: auto;
-  border-radius: 38px;
-  padding: 9px;
-  background: linear-gradient(160deg, #2c2c33, #101014);
-  box-shadow: 0 32px 70px rgba(22, 22, 26, 0.28), 0 2px 0 rgba(255, 255, 255, 0.12) inset;
-}
-
-.phone img { border-radius: 30px; }
-
-.phone--lg { width: min(100%, 320px); }
-
-/* Horizontal inset stays 0 so the halo can never widen the page. */
-.phone__glow {
-  position: absolute;
-  inset: -14% 0;
-  z-index: -1;
-  background: radial-gradient(closest-side, rgba(199, 67, 18, 0.22), transparent 72%);
-}
-
 /* Set like the app's burned-in photo stamp: mono, uppercase, label in orange. */
 .shot__cap {
   font-family: var(--mono);
@@ -359,16 +358,78 @@ h2.display {
 .band--dark .shot__cap { color: var(--dark-text-3); }
 .band--dark .shot__cap b { color: var(--safety-hi); }
 
-/* ---------- download CTA ---------- */
+/* ---------- app store call to action ---------- */
 
-.hero__cta { margin: 26px 0 0; }
+.btn--lg { padding: 16px 30px; font-size: 17px; }
 
-.signup__hint {
-  font-size: 13.5px;
+.cta { margin-top: 32px; max-width: 540px; }
+
+.cta__note {
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--ink-2);
-  margin: 12px 0 0;
-  width: 100%;
+  margin: 16px 0 0;
 }
+
+/* ---------- device frames ---------- */
+
+/* One screen, one frame. The headline that used to be burned into the App Store
+   panel is real text above the frame now: selectable, translatable, findable,
+   and readable by a screen reader - none of which a JPEG of type can be.
+   The frame is cropped square at the bottom because the capture is the top of a
+   taller screen; a phone running off the edge reads as deliberate, where a
+   full bezel with the feet chopped off reads as a mistake. */
+.phone {
+  width: min(100%, 300px);
+  margin-inline: auto;
+  padding: 10px 10px 0;
+  background: linear-gradient(160deg, #2c2c33, #101014);
+  border-radius: 42px 42px 14px 14px;
+  box-shadow: 0 26px 56px rgba(22, 22, 26, 0.24), 0 2px 0 rgba(255, 255, 255, 0.12) inset;
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 33px 33px 0 0;
+}
+
+.phone--hero { width: min(100%, 320px); }
+
+.rail {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 16px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(80vw, 288px);
+  gap: clamp(22px, 3.5vw, 40px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  align-items: end;
+}
+
+.rail__item { scroll-snap-align: start; min-width: 0; }
+
+.rail__title {
+  font-family: var(--display);
+  font-size: 21px;
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.rail__sub {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 22px;
+}
+
+.rail .phone { width: 100%; }
+
 
 /* ---------- counter strip ---------- */
 
@@ -801,10 +862,17 @@ h2.display {
 
 .truth p { margin: 0; color: var(--dark-text-2); font-size: 15px; }
 
-/* ---------- download band ---------- */
+/* ---------- closing call to action ---------- */
 
 .join { text-align: center; }
 .join .display, .join .lead { margin-inline: auto; }
+.join__cta { margin: 32px 0 0; }
+
+/* .eyebrow--stamp is a flex row, so it does not inherit .join's text-align. */
+.join .eyebrow--stamp { justify-content: center; }
+
+.foot__store { margin: 10px 0 0; font-size: 15px; }
+.foot__store a { color: var(--safety-ink); }
 
 /* ---------- pricing line ---------- */
 
@@ -935,8 +1003,11 @@ h2.display {
   .split { grid-template-columns: minmax(0, 1fr); }
   .split--reverse .split__media { order: 0; }
   .hero__media { max-width: 300px; margin-inline: auto; }
-  /* The product shot earns its place above the ask on a phone. */
-  .hero__media { order: -1; }
+  /* The shot used to sit above the ask, back when the ask was "join a waitlist"
+     and the picture was the only proof the app existed. The app ships now and
+     the ask is a download button, so on a phone the headline and that button
+     come first - above the fold - and the store card follows as support. */
+  .hero__media { order: 0; margin-top: 40px; }
   .sheet__photos { grid-template-columns: repeat(3, 1fr); }
   .scan__grid { grid-template-columns: repeat(4, 1fr); }
 
@@ -974,7 +1045,7 @@ h2.display {
 /* ---------- print (the legal pages get saved as PDFs) ---------- */
 
 @media print {
-  .topbar, .nav, .foot, .scan, .builder, .report { display: none; }
+  .topbar, .nav, .foot, .rail, .scan, .builder, .report { display: none; }
   body { background: #fff; color: #000; font-size: 12pt; }
   .shell, .wrap { width: auto; max-width: none; padding: 0; }
   .legal a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10pt; }

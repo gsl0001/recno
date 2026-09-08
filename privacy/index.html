@@ -19,7 +19,7 @@
     </nav>
     <article class="legal">
       <h1>Recno Privacy Policy</h1>
-      <p><strong>Last updated:</strong> August 23, 2026</p>
+      <p><strong>Last updated:</strong> August 28, 2026</p>
       <p>Recno is a local-first jobsite photo and report app for contractors. This policy describes the current app behavior and should be reviewed whenever new cloud, account, analytics, or payment features are added.</p>
 
       <h2>Summary</h2>
@@ -36,9 +36,14 @@
       </ul>
 
       <h2>Local-First Storage</h2>
-      <p>The current app stores records in local device storage and local files. Automatic backup is on by default and creates complete, portable ZIP archives; you can turn automatic backup off at any time in Settings. When iCloud is available, each archive is placed in your private iCloud Drive container and Apple performs the upload in the background. Recno can confirm only that an archive was written into the local iCloud container on your device — it cannot confirm that Apple's servers finished uploading it. When iCloud is unavailable, Recno falls back to bounded on-device copies stored on this iPhone only. Recno keeps the two newest automatic archives as restore points: the current one and the previous one. On-device-only copies that never reach iCloud are lost if you delete or uninstall the app. Recno does not add its own encryption to these archives; they rely on Apple's iCloud encryption. Turning on Advanced Data Protection in iOS Settings makes iCloud contents, including Recno archives, end-to-end encrypted so that only your own devices can read them.</p>
-      <p>This is backup storage, not live cloud sync. Recno does not currently provide team accounts, remote analytics, advertising SDKs, or server-side account storage, and does not receive your Apple ID or operate a server that can read these archives. It does use the limited remote services described below for weather, address lookups, and subscription validation.</p>
+      <p>The current app stores records in local device storage and local files. Automatic backup is on by default; each restore point is a compact archive plus the media files it references, stored together so unchanged photos and videos are not re-copied on every backup, and restorable as a complete whole. You can turn automatic backup off at any time in Settings. When iCloud is available, each archive is placed in your private iCloud Drive container and Apple performs the upload in the background. Recno can confirm only that an archive was written into the local iCloud container on your device — it cannot confirm that Apple's servers finished uploading it. When iCloud is unavailable, Recno falls back to bounded on-device copies stored on this iPhone only. Recno keeps the two newest automatic archives as restore points: the current one and the previous one. On-device-only copies that never reach iCloud are lost if you delete or uninstall the app. Recno does not add its own encryption to these archives; they rely on Apple's iCloud encryption. Turning on Advanced Data Protection in iOS Settings makes iCloud contents, including Recno archives, end-to-end encrypted so that only your own devices can read them.</p>
+      <p>This is backup storage, not live cloud sync. Recno does not currently provide team accounts, advertising SDKs, or server-side account storage, and does not receive your Apple ID or operate a server that can read these archives. It does use the limited remote services described below for weather, address lookups, subscription validation, and — only if you opt in — the anonymous activation count described below.</p>
       <p>Reports, backups, and shared photos leave the app only when you start an export, backup, save, or share action. Anyone you send files to may store, forward, or copy them outside Recno.</p>
+
+      <h2>Anonymous Activation Reporting (Optional)</h2>
+      <p>Recno can send an anonymous usage-analytics signal to help us count how many contractors get value from the app. This is off by default, on every device.</p>
+      <p>The first time you finish setup — create a project, log a photo or clock entry, and export a report — Recno asks: "Help us count how many contractors get value from Recno? We'd send an anonymous tag when you finish setup and if you come back later — never your jobsites, photos, notes, or location." You choose Allow or Not now. You can change your answer any time in Settings → Trust &amp; legal → Anonymous activation reporting.</p>
+      <p>If you allow it, Recno sends up to two tiny events, each containing only: a random ID generated on your device (not your Apple ID, IDFA/IDFV, device name, or push token, and it cannot be traced back to you), which event it is (setup finished, or returned 30+ days later), the calendar date (no time of day), and the app version. Nothing else is ever included — no project names, addresses, GPS coordinates, photos, videos, notes, crew names, clock times, or report contents. Declining, or being offline when an event would send, never disables or blocks any app feature; declined and undeliverable events are simply never sent.</p>
 
       <h2>Subscriptions</h2>
       <p>Recno uses RevenueCat to validate and maintain App Store subscriptions. RevenueCat receives an anonymous app user identifier, App Store purchase, receipt, and subscription status, and limited device and store metadata solely for that purpose.</p>
@@ -51,7 +56,7 @@
       <h2>Location Access</h2>
       <p>Recno uses location to help detect which project site you are on and to match existing media to jobsites. Location is used for organizing job records and reports. Recno should not be marketed as silent worker monitoring.</p>
       <p>Recno uses location only while the app is in use. It does not request background location or monitor jobsite exits after you leave the app.</p>
-      <p>Weather on photo stamps is on by default; you can turn it off in Settings. While it is on, Recno sends your location rounded to about four decimal places to Open-Meteo to fetch current weather. Open-Meteo does not receive your project names, photos, notes, labor records, or reports from Recno.</p>
+      <p>Weather on photo stamps is on by default; you can turn it off in Settings. While it is on, Recno sends your location rounded to two decimal places (roughly a kilometer) to Open-Meteo to fetch current weather. Open-Meteo does not receive your project names, photos, notes, labor records, or reports from Recno.</p>
       <p>You can revoke location permission in system settings. Some features, including automatic project matching and Sifter, may stop working when location access is removed.</p>
 
       <h2>Address Search</h2>
