@@ -250,13 +250,19 @@ h2.display {
   line-height: 1;
 }
 
-.mark__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  background: var(--safety);
-  transform: translateY(-6px);
+/* The wordmark carries the app's own icon - the viewfinder reticle from
+   assets/icon.png, redrawn as inline SVG so it stays sharp and costs no
+   request. It replaced a floating orange square that matched nothing in the
+   product and read as a rendering fault. */
+.mark__icon {
+  flex: none;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
 }
+
+.foot .mark__icon { width: 24px; height: 24px; }
 
 .topbar__links {
   display: flex;

@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Recno">
-  <rect width="64" height="64" rx="14" fill="#16161a"/>
-  <rect x="14" y="14" width="36" height="24" rx="4" fill="none" stroke="#f5f4f2" stroke-width="4"/>
-  <rect x="20" y="44" width="24" height="7" rx="3.5" fill="#c74312"/>
+  <rect width="64" height="64" rx="14" fill="#11141a"/>
+  <g fill="#fbf8f1">
+    <path d="M12 22V12h10v4h-6v6z"/><path d="M42 12h10v10h-4v-6h-6z"/>
+    <path d="M12 42v10h10v-4h-6v-6z"/><path d="M52 42v10H42v-4h6v-6z"/>
+    <rect x="30.6" y="13" width="2.9" height="6" rx="1.4"/>
+    <rect x="30.6" y="45" width="2.9" height="6" rx="1.4"/>
+    <rect x="13" y="30.6" width="6" height="2.9" rx="1.4"/>
+    <rect x="45" y="30.6" width="6" height="2.9" rx="1.4"/>
+  </g>
+  <circle cx="32" cy="32" r="6" fill="#e54a14"/>
 </svg>
