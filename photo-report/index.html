@@ -1,10 +1,181 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Free jobsite photo report | Recno</title><meta name="description" content="Make a simple jobsite photo report in your browser. Add photos and notes, then print or save as PDF. No account and no photo uploads."><link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="report.css"><script src="report.js" defer></script></head>
-<body><header><a class="brand" href="../"><img src="../assets/favicon.svg" width="36" height="36" alt="">recno.</a><span>FREE FIELD TOOL</span></header>
-<main><section class="intro"><p class="eyebrow">FROM CAMERA ROLL TO CLIENT UPDATE</p><h1>A clear photo report.<br>Before you leave the job.</h1><p>Add up to 12 photos, write what happened, and choose <strong>Save as PDF</strong> in your browser’s print window. Photos stay in this browser tab; this tool does not upload them.</p></section>
-<section class="editor" aria-label="Report details"><label>Job or project<input id="job" maxlength="160" placeholder="e.g. Kitchen remodel — progress update"></label><div class="fields"><label>Prepared by<input id="author" maxlength="100" placeholder="Your name or company"></label><label>Report date<input id="date" type="date"></label></div><label>Summary<textarea id="summary" maxlength="2000" rows="3" placeholder="What was completed? What needs attention?"></textarea></label><label class="picker">Add job photos<input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><p class="hint">JPG, PNG or WebP · up to 15 MB each. Use photos you have permission to share. Nothing is saved after you close or reload this tab.</p><p id="status" role="status" aria-live="polite">Add your first photo to begin.</p></section>
-<section id="cards" aria-label="Photos and captions"></section><div class="actions"><button id="preview" disabled>Preview report</button> <button id="print" disabled>Print / save as PDF</button></div>
-<aside><h2>Need your photos organized every day?</h2><p>Recno for iPhone keeps photos with the job, offline and without an account. Capture and filing are free. Sifter and in-app report export require Pro. This browser tool is free.</p><a class="download" href="https://apps.apple.com/app/apple-store/id6785280739?pt=129096683&amp;ct=FreePhotoReportSep2026&amp;mt=8">Get Recno on the App Store ↗</a></aside></main>
-<section id="output" aria-label="Printable report"></section><footer><a href="../privacy/">Privacy</a> · <a href="../support/">Support</a></footer></body></html>
-
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Free jobsite photo report builder | Recno</title>
+    <meta
+      name="description"
+      content="Create a free jobsite photo report with captions, action items and client details. Download a PDF or save an editable draft. Photos stay on your device."
+    />
+    <link rel="icon" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="report.css" />
+    <script src="vendor/pdf-lib.min.js" defer></script>
+    <script src="vendor/fontkit.umd.min.js" defer></script>
+    <script src="report-core.js" defer></script>
+    <script src="report.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="../"
+        ><img
+          src="../assets/favicon.svg"
+          width="36"
+          height="36"
+          alt=""
+        />recno.</a
+      ><span>FREE FIELD TOOL / 01</span>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">FINISH THE JOB. SEND THE RECORD.</p>
+        <h1>Your photos.<br />A report worth sending.</h1>
+        <p>
+          Build a progress update, pre-cover record, punch list or handover.
+          Download a PDF directly — no account, no subscription, no photo
+          uploads.
+        </p>
+        <div class="toolbar">
+          <button id="import-button" class="secondary">Open saved draft</button
+          ><input
+            id="import"
+            type="file"
+            accept="application/json,.json"
+            hidden
+          /><button id="save" class="secondary">Save draft</button
+          ><button id="clear" class="quiet">Clear report</button>
+        </div>
+        <p class="hint">
+          Work stays in this tab until you download it. Save a draft before
+          closing or reloading; drafts include your photos and notes.
+        </p>
+      </section>
+      <section class="editor" aria-label="Report details">
+        <div class="section-head">
+          <span class="step">01</span>
+          <h2>Set the scene</h2>
+        </div>
+        <div class="fields">
+          <label
+            >Report type<select id="type">
+              <option>Progress update</option>
+              <option>Pre-cover record</option>
+              <option>Punch list</option>
+              <option>Client handover</option>
+            </select></label
+          ><label>Report date<input id="date" type="date" /></label>
+        </div>
+        <label
+          >Job or project<input
+            id="job"
+            maxlength="200"
+            placeholder="e.g. Oak Street kitchen remodel"
+        /></label>
+        <div class="fields">
+          <label
+            >Prepared by<input
+              id="author"
+              maxlength="200"
+              placeholder="Your name" /></label
+          ><label>Company<input id="company" maxlength="200" /></label
+          ><label>Client<input id="client" maxlength="200" /></label
+          ><label
+            >Report reference<input
+              id="reference"
+              maxlength="200"
+              placeholder="e.g. OAK-014"
+          /></label>
+        </div>
+        <label>Site address<input id="address" maxlength="200" /></label
+        ><label
+          >Summary<textarea
+            id="summary"
+            maxlength="6000"
+            rows="4"
+            placeholder="Work completed, current conditions, and next steps."
+          ></textarea>
+        </label>
+      </section>
+      <section class="editor" aria-label="Photo editor">
+        <div class="section-head">
+          <span class="step">02</span>
+          <h2>Show the work</h2>
+          <span id="count" class="count">0 / 30 photos</span>
+        </div>
+        <label class="picker"
+          >Add job photos<input
+            id="photos"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+        /></label>
+        <p class="hint">
+          JPG, PNG or WebP · up to 30 photos, 15 MB each. Photos are resized to
+          1600 px for a manageable PDF. For HEIC, export as JPG first. Use
+          photos you have permission to share.
+        </p>
+        <div id="cards"></div>
+      </section>
+      <section class="editor" aria-label="Action items">
+        <div class="section-head">
+          <span class="step">03</span>
+          <h2>Make the next step clear</h2>
+        </div>
+        <p class="hint">
+          Optional: assign outstanding work, due dates and completion status.
+        </p>
+        <div id="action-items"></div>
+        <button id="add-action" class="secondary">Add action item</button>
+      </section>
+      <section class="editor" aria-label="Export report">
+        <div class="section-head">
+          <span class="step">04</span>
+          <h2>Ready to send</h2>
+        </div>
+        <div class="fields">
+          <label
+            >Paper size<select id="paper">
+              <option value="Letter">US Letter</option>
+              <option>A4</option>
+            </select></label
+          ><label
+            >Photo layout<select id="layout">
+              <option value="compact">Compact · smaller photos</option>
+              <option value="detail">Detail · each photo starts a page</option>
+            </select></label
+          >
+        </div>
+        <div class="toolbar">
+          <button id="pdf" disabled>Download PDF</button
+          ><button id="preview" class="secondary" disabled>
+            Preview report
+          </button>
+        </div>
+        <p id="status" role="status" aria-live="polite">
+          Add your first photo to begin.
+        </p>
+        <p class="hint">
+          PDF downloads directly; some mobile browsers open it for sharing or
+          saving. Preview shows content; PDF pagination depends on paper size.
+        </p>
+      </section>
+      <section id="output" aria-label="Report preview" hidden></section>
+      <aside>
+        <h2>Keep the next job organized from day one.</h2>
+        <p>
+          Recno for iPhone keeps photos with the job, offline and without an
+          account. Capture and filing are free. Sifter and in-app report export
+          require Pro. This browser tool is free.
+        </p>
+        <a
+          class="download"
+          href="https://apps.apple.com/app/apple-store/id6785280739?pt=129096683&amp;ct=FreePhotoReportSep2026&amp;mt=8"
+          >Get Recno on the App Store ↗</a
+        >
+      </aside>
+    </main>
+    <footer>
+      <a href="../privacy/">Privacy</a> · <a href="../support/">Support</a>
+    </footer>
+  </body>
+</html>

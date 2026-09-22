@@ -1,0 +1,7 @@
+Third-party assets
+
+pdf-lib 1.17.1: MIT; see pdf-lib-LICENSE.md. https://github.com/Hopding/pdf-lib
+@pdf-lib/fontkit 1.1.1: MIT, as declared by its published package and README (included here). Authors: Andrew Dillon; fontkit originally by Devon Govett. https://github.com/Hopding/fontkit
+Geist Regular: SIL Open Font License; see Geist-LICENSE.txt. Bundled from @expo-google-fonts/geist.
+
+Libraries and font are self-hosted. Photos are processed locally in the browser.
