@@ -35,7 +35,7 @@ function buildReport() {
   const head = element('header',undefined,'report-head');
   head.append(element('h1',$('job').value.trim() || 'Jobsite photo report'),element('p',[$('author').value.trim(),$('date').value].filter(Boolean).join(' · ')),element('p',$('summary').value)); output.append(head);
   photos.forEach((photo,index) => { const figure=element('figure',undefined,'report-photo'); const image=element('img'); image.src=photo.url; image.alt=`Photo ${index+1}`; figure.append(image,element('figcaption',`${index+1}. ${photo.caption}`)); output.append(figure); });
-  const credit=element('p','Created with the free Recno photo report tool · ','report-credit'); const link=element('a','Get Recno for iPhone'); link.href='https://apps.apple.com/us/app/recno/id6785280739'; credit.append(link); output.append(credit);
+  const credit=element('p','Created with the free Recno photo report tool · ','report-credit'); const link=element('a','Get Recno for iPhone'); link.href='https://apps.apple.com/app/apple-store/id6785280739?pt=129096683&ct=FreePhotoReportSep2026&mt=8'; credit.append(link); output.append(credit);
 }
 $('preview').addEventListener('click', () => {
   buildReport(); $('output').classList.add('visible'); $('output').scrollIntoView({behavior:'smooth'});
@@ -46,3 +46,4 @@ $('print').addEventListener('click', async () => {
   catch { $('status').textContent = 'A photo could not be prepared. Remove it and add it again before printing.'; }
 });
 window.addEventListener('beforeprint', buildReport);
+
