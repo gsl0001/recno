@@ -248,10 +248,11 @@ $("photos").addEventListener("change", () => {
         break;
       }
       if (
-        !["image/jpeg", "image/png", "image/webp"].includes(f.type) ||
+        (!["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"].includes(f.type) &&
+          !/\.(heic|heif)$/i.test(f.name)) ||
         f.size > 15 * 1024 * 1024
       ) {
-        errors.push(`${f.name}: use JPG, PNG or WebP under 15 MB.`);
+        errors.push(`${f.name}: use JPG, PNG, WebP or HEIC under 15 MB.`);
         continue;
       }
       const url = URL.createObjectURL(f);
@@ -266,7 +267,7 @@ $("photos").addEventListener("change", () => {
         });
         added++;
       } catch {
-        errors.push(`${f.name}: image could not be read.`);
+        errors.push(`${f.name}: image could not be read. For HEIC, use Safari 17 or newer, or export as JPG.`);
       } finally {
         URL.revokeObjectURL(url);
       }
