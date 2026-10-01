@@ -20,24 +20,6 @@
     }
   }
 
-  /* ---------- scroll reveals ---------- */
-
-  guard('reveal', function () {
-    var revealables = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window) || prefersReduced()) {
-      Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-in'); });
-      return;
-    }
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        observer.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -12% 0px' });
-    Array.prototype.forEach.call(revealables, function (el) { observer.observe(el); });
-  });
-
   /* ---------- Sifter scan demo ----------
      Mirrors the real flow: photos near a saved job are matched and queued,
      everything else is left alone. The pattern is fixed so the count is honest. */
@@ -63,7 +45,6 @@
     var runBtn = scanRoot.querySelector('[data-scan-run]');
     var running = false;
     var runId = 0;
-    var autoTimer = null;
     var photoAt = 0;
 
     ROLL.forEach(function (kind) {
@@ -113,10 +94,6 @@
     }
 
     function runScan() {
-      // A manual run cancels the pending auto-run, so scrolling can never wipe
-      // a result the visitor asked for.
-      window.clearTimeout(autoTimer);
-      autoTimer = null;
       if (running) return;
 
       running = true;
@@ -152,16 +129,6 @@
 
     runBtn.addEventListener('click', runScan);
 
-    if ('IntersectionObserver' in window && !prefersReduced()) {
-      var scanObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          scanObserver.disconnect();
-          autoTimer = window.setTimeout(runScan, 350);
-        });
-      }, { threshold: 0.4 });
-      scanObserver.observe(scanRoot);
-    }
   });
 
   /* ---------- photo stamp builder ---------- */
@@ -179,77 +146,6 @@
         if (line) line.classList.toggle('is-off', !on);
       });
     });
-  });
-
-  /* ---------- report builder ---------- */
-
-  guard('report', function () {
-    var report = document.getElementById('report');
-    if (!report) return;
-
-    var sheet = document.getElementById('sheet');
-    var csvBlock = sheet.querySelector('[data-block="csv"]');
-    var emptyNote = sheet.querySelector('[data-empty]');
-    var footOut = report.querySelector('[data-report-foot]');
-    var blockChips = document.querySelectorAll('[data-block-toggle]');
-    var format = 'pdf';
-
-    function chipFor(name) {
-      return document.querySelector('[data-block-toggle="' + name + '"]');
-    }
-
-    function wants(name) {
-      var chip = chipFor(name);
-      return !chip || chip.getAttribute('aria-pressed') === 'true';
-    }
-
-    function render() {
-      var isCsv = format === 'csv';
-      var shown = 0;
-
-      Array.prototype.forEach.call(sheet.querySelectorAll('.sheet__block'), function (block) {
-        var visible = wants(block.getAttribute('data-block')) && !isCsv;
-        block.hidden = !visible;
-        if (visible) shown += 1;
-      });
-
-      csvBlock.hidden = !isCsv;
-      emptyNote.hidden = isCsv || shown > 0;
-
-      // CSV carries only the hours table, so the section chips have nothing to
-      // act on. Disable them rather than let them confirm a change that is not
-      // happening.
-      Array.prototype.forEach.call(blockChips, function (chip) { chip.disabled = isCsv; });
-
-      if (isCsv) {
-        footOut.textContent = 'CSV · crew hours and cost · opens in a spreadsheet';
-      } else if (shown === 0) {
-        footOut.textContent = format.toUpperCase() + ' · nothing selected yet';
-      } else {
-        footOut.textContent = format.toUpperCase() + ' · ' +
-          (wants('photos') ? '8 photos · ' : 'no photos · ') + 'ready to share';
-      }
-    }
-
-    Array.prototype.forEach.call(blockChips, function (chip) {
-      chip.addEventListener('click', function () {
-        chip.setAttribute('aria-pressed', String(chip.getAttribute('aria-pressed') !== 'true'));
-        render();
-      });
-    });
-
-    var tabs = report.querySelectorAll('[data-fmt]');
-    Array.prototype.forEach.call(tabs, function (tab) {
-      tab.addEventListener('click', function () {
-        format = tab.getAttribute('data-fmt');
-        Array.prototype.forEach.call(tabs, function (other) {
-          other.setAttribute('aria-pressed', String(other === tab));
-        });
-        render();
-      });
-    });
-
-    render();
   });
 
 })();

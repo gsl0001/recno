@@ -57,9 +57,9 @@
   --body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --r-lg: 22px;
-  --r-md: 16px;
-  --r-sm: 10px;
+  /* One corner radius for every box, button and field. Phone screenshots
+     keep the device's own corner so they read as the phone. */
+  --r: 12px;
   --gut: clamp(20px, 5vw, 64px);
   --topbar-h: 68px;
 }
@@ -132,27 +132,6 @@ a { color: var(--safety-ink); }
 }
 
 .eyebrow--dark { color: var(--safety-hi); }
-
-/* Section eyebrows carry real record data - job, temperature, hours on the
-   clock - instead of 01/02/03 numbering. These sections are topics, not a
-   sequence, and the whole product argument is that a record is worth nothing
-   without its context. The leading tick is the same mark the App Store cards
-   use, so the page and the store listing read as one thing. */
-.eyebrow--stamp {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.eyebrow--stamp::before {
-  content: "";
-  flex: none;
-  width: 3px;
-  height: 0.95em;
-  background: currentColor;
-  border-radius: 1px;
-  transform: translateY(0.08em);
-}
 
 /* The 0.95 line-height leaves the ink box slightly proud of the layout box;
    the padding/margin pair reserves that overhang so display type can never
@@ -250,16 +229,11 @@ h2.display {
   line-height: 1;
 }
 
-/* The wordmark carries the app's own icon - the viewfinder reticle from
-   assets/icon.png, redrawn as inline SVG so it stays sharp and costs no
-   request. It replaced a floating orange square that matched nothing in the
-   product and read as a rendering fault. */
 .mark__icon {
   flex: none;
   display: block;
   width: 26px;
   height: 26px;
-  border-radius: 6px;
 }
 
 .foot .mark__icon { width: 24px; height: 24px; }
@@ -277,8 +251,6 @@ h2.display {
   white-space: nowrap;
 }
 
-.topbar__links a:hover { color: var(--ink); }
-
 /* ---------- buttons ---------- */
 
 .btn {
@@ -287,21 +259,18 @@ h2.display {
   justify-content: center;
   gap: 8px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--r);
   padding: 13px 24px;
   font-family: var(--body);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
   background: var(--safety);
   color: #fff;
-  transition: transform 0.12s ease, background 0.12s ease;
 }
 
-.btn:hover { background: var(--safety-ink); }
-.btn:active { transform: translateY(1px); }
 .btn--sm { padding: 10px 18px; font-size: 15px; }
 
 /* ---------- hero ---------- */
@@ -316,8 +285,6 @@ h2.display {
 }
 
 .hero h1 .accent { color: var(--safety); }
-
-.hero__form { margin-top: 32px; max-width: 520px; }
 
 .hero__meta {
   display: flex;
@@ -343,10 +310,22 @@ h2.display {
 
 /* ---------- phone + the stamp caption ---------- */
 
+/* Real 1206x2622 captures, status bar and Dynamic Island included, so the
+   image reads as the phone. A hairline edge is all the frame it needs. */
+.phone {
+  width: min(100%, 300px);
+  margin-inline: auto;
+}
+
+.phone img {
+  border-radius: 44px;
+  border: 1px solid var(--line-2);
+}
+
 /* Set like the app's burned-in photo stamp: mono, uppercase, label in orange. */
 .shot__cap {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -364,78 +343,19 @@ h2.display {
 .band--dark .shot__cap { color: var(--dark-text-3); }
 .band--dark .shot__cap b { color: var(--safety-hi); }
 
-/* ---------- app store call to action ---------- */
+/* ---------- call to action ---------- */
 
-.btn--lg { padding: 16px 30px; font-size: 17px; }
+.cta { max-width: 560px; }
 
-.cta { margin-top: 32px; max-width: 540px; }
-
-.cta__note {
-  font-size: 14.5px;
-  line-height: 1.6;
+.cta__hint {
+  font-size: 15px;
   color: var(--ink-2);
-  margin: 16px 0 0;
+  margin: 12px 0 0;
+  max-width: 60ch;
 }
 
-/* ---------- device frames ---------- */
-
-/* One screen, one frame. The headline that used to be burned into the App Store
-   panel is real text above the frame now: selectable, translatable, findable,
-   and readable by a screen reader - none of which a JPEG of type can be.
-   The frame is cropped square at the bottom because the capture is the top of a
-   taller screen; a phone running off the edge reads as deliberate, where a
-   full bezel with the feet chopped off reads as a mistake. */
-.phone {
-  width: min(100%, 300px);
-  margin-inline: auto;
-  padding: 10px 10px 0;
-  background: linear-gradient(160deg, #2c2c33, #101014);
-  border-radius: 42px 42px 14px 14px;
-  box-shadow: 0 26px 56px rgba(22, 22, 26, 0.24), 0 2px 0 rgba(255, 255, 255, 0.12) inset;
-}
-
-.phone img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 33px 33px 0 0;
-}
-
-.phone--hero { width: min(100%, 320px); }
-
-.rail {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 16px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min(80vw, 288px);
-  gap: clamp(22px, 3.5vw, 40px);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  align-items: end;
-}
-
-.rail__item { scroll-snap-align: start; min-width: 0; }
-
-.rail__title {
-  font-family: var(--display);
-  font-size: 21px;
-  line-height: 1.15;
-  font-weight: 700;
-  margin: 0 0 8px;
-}
-
-.rail__sub {
-  font-size: 14.5px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  margin: 0 0 22px;
-}
-
-.rail .phone { width: 100%; }
-
+.hero__cta { margin-top: 32px; }
+.cta--inline { margin-top: clamp(40px, 5vw, 60px); }
 
 /* ---------- counter strip ---------- */
 
@@ -496,7 +416,7 @@ h2.display {
 .band--dark .points li:last-child { border-bottom-color: var(--line-dark); }
 
 .points strong { display: block; font-weight: 600; }
-.points p { margin: 4px 0 0; color: var(--ink-2); font-size: 15.5px; }
+.points p { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; }
 .band--dark .points p { color: var(--dark-text-2); }
 
 /* ---------- sifter scan demo ---------- */
@@ -504,7 +424,7 @@ h2.display {
 .scan {
   background: var(--night-2);
   border: 1px solid var(--line-dark);
-  border-radius: var(--r-lg);
+  border-radius: var(--r);
   padding: clamp(20px, 3vw, 30px);
 }
 
@@ -535,10 +455,10 @@ h2.display {
   position: relative;
   aspect-ratio: 1;
   min-height: 44px;
-  border-radius: var(--r-sm);
+  border-radius: var(--r);
   border: 1px solid var(--line-dark);
   overflow: hidden;
-  transition: opacity 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition: opacity 0.35s ease, border-color 0.35s ease;
 }
 
 .tile__art {
@@ -569,7 +489,8 @@ h2.display {
 
 .tile.is-matched {
   border-color: var(--safety-hi);
-  box-shadow: 0 0 0 2px var(--safety-hi);
+  outline: 2px solid var(--safety-hi);
+  outline-offset: -2px;
 }
 
 .tile.is-matched .tile__tag { opacity: 1; transform: none; }
@@ -597,7 +518,7 @@ h2.display {
   padding-top: 18px;
   border-top: 1px solid var(--line-dark);
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--dark-text-3);
   text-transform: uppercase;
@@ -610,14 +531,14 @@ h2.display {
 .builder {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: var(--r);
   padding: clamp(20px, 3vw, 28px);
 }
 
 .plate {
   position: relative;
   aspect-ratio: 4 / 3;
-  border-radius: var(--r-md);
+  border-radius: var(--r);
   overflow: hidden;
   background-image: url("assets/plate.webp");
   background-size: cover;
@@ -652,10 +573,9 @@ h2.display {
   border: 1px solid var(--line-2);
   background: var(--canvas);
   color: var(--ink-2);
-  border-radius: 999px;
+  border-radius: var(--r);
   padding: 10px 15px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .chip[aria-pressed="true"] {
@@ -664,155 +584,13 @@ h2.display {
   color: var(--safety-ink);
 }
 
-.chip:hover { border-color: var(--safety); }
 
-/* CSV carries only the hours table, so the section chips have nothing to act on. */
-.chip:disabled { opacity: 0.45; cursor: default; }
-.chip:disabled:hover { border-color: var(--line-2); }
+/* ---------- faq ---------- */
 
-/* ---------- report builder ---------- */
-
-.report {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-}
-
-.report__bar {
-  display: flex;
-  gap: 6px;
-  padding: 14px;
-  border-bottom: 1px solid var(--line);
-  background: var(--canvas);
-  flex-wrap: wrap;
-}
-
-.tab {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--ink-2);
-  border-radius: 999px;
-  padding: 9px 16px;
-  cursor: pointer;
-}
-
-.tab[aria-pressed="true"] { background: var(--ink); color: #fff; }
-
-.sheet {
-  padding: clamp(20px, 3vw, 30px);
-  min-height: 340px;
-  font-size: 14px;
-}
-
-.sheet__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 14px;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 12px;
-}
-
-.sheet__logo {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 23px;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-}
-
-.sheet__meta {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.sheet__meta--right { text-align: right; }
-
-.sheet__block { padding: 14px 0; border-bottom: 1px solid var(--line); }
-.sheet__block[hidden] { display: none; }
-
-.sheet__label {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--safety-ink);
-  margin-bottom: 9px;
-}
-
-.sheet__note { margin: 0; color: var(--ink-2); }
-
-.sheet__photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-
-.sheet__photo {
-  aspect-ratio: 4 / 3;
-  border-radius: 6px;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--paper-2);
-}
-
-.sheet__photo:nth-child(6n + 1) { background-image: url("assets/tile-1.webp"); }
-.sheet__photo:nth-child(6n + 2) { background-image: url("assets/tile-2.webp"); }
-.sheet__photo:nth-child(6n + 3) { background-image: url("assets/tile-3.webp"); }
-.sheet__photo:nth-child(6n + 4) { background-image: url("assets/tile-4.webp"); }
-.sheet__photo:nth-child(6n + 5) { background-image: url("assets/tile-5.webp"); }
-.sheet__photo:nth-child(6n) { background-image: url("assets/tile-6.webp"); }
-
-.sheet__rows { font-family: var(--mono); font-size: 12px; }
-
-.sheet__row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 4px 0;
-  color: var(--ink-2);
-}
-
-.sheet__row b { color: var(--ink); font-weight: 500; }
-
-.sheet__empty {
-  color: var(--ink-3);
-  font-family: var(--mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 30px 0;
-  text-align: center;
-}
-
-/* A <pre>, so the line breaks are structural rather than a styling accident. */
-.sheet__csv {
-  font-family: var(--mono);
-  font-size: 12px;
-  overflow-x: auto;
-  color: var(--ink-2);
-  line-height: 1.9;
-  margin: 0;
-}
-
-.report__foot {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding: 14px clamp(20px, 3vw, 30px);
-  border-top: 1px solid var(--line);
-  background: var(--canvas);
-  font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
+.faq { max-width: 70ch; border-top: 1px solid var(--line-2); }
+.faq details { border-bottom: 1px solid var(--line-2); padding: 18px 0; }
+.faq summary { font-weight: 600; cursor: pointer; }
+.faq p { margin: 10px 0 0; color: var(--ink-2); }
 
 /* ---------- feature cards ---------- */
 
@@ -825,7 +603,7 @@ h2.display {
 .card {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: var(--r);
   padding: 26px 24px;
 }
 
@@ -838,7 +616,7 @@ h2.display {
   margin: 0 0 10px;
 }
 
-.card p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+.card p { margin: 0; color: var(--ink-2); font-size: 15px; }
 
 /* ---------- privacy band ---------- */
 
@@ -851,7 +629,7 @@ h2.display {
 
 .truth {
   border: 1px solid var(--line-dark);
-  border-radius: var(--r-md);
+  border-radius: var(--r);
   padding: 22px;
   background: var(--night-2);
 }
@@ -868,18 +646,6 @@ h2.display {
 
 .truth p { margin: 0; color: var(--dark-text-2); font-size: 15px; }
 
-/* ---------- closing call to action ---------- */
-
-.join { text-align: center; }
-.join .display, .join .lead { margin-inline: auto; }
-.join__cta { margin: 32px 0 0; }
-
-/* .eyebrow--stamp is a flex row, so it does not inherit .join's text-align. */
-.join .eyebrow--stamp { justify-content: center; }
-
-.foot__store { margin: 10px 0 0; font-size: 15px; }
-.foot__store a { color: var(--safety-ink); }
-
 /* ---------- pricing line ---------- */
 
 .plan {
@@ -887,19 +653,18 @@ h2.display {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
   margin-top: 36px;
-  text-align: left;
 }
 
 .plan__item {
   border: 1px solid var(--line);
-  border-radius: var(--r-md);
+  border-radius: var(--r);
   padding: 20px 22px;
   background: var(--paper);
 }
 
 .plan__k {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--safety-ink);
@@ -927,25 +692,13 @@ h2.display {
 
 .foot__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .foot__links a { color: var(--ink-2); text-decoration: none; }
-.foot__links a:hover { color: var(--safety-ink); }
 
 .foot__note {
   color: var(--ink-3);
-  font-size: 13.5px;
+  font-size: 15px;
   max-width: 62ch;
   margin: 22px 0 0;
 }
-
-/* ---------- reveal ----------
-   Gated on .js so the content is never hidden when the script does not run. */
-
-.js .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-.js .reveal.is-in { opacity: 1; transform: none; }
 
 /* ---------- legal pages ---------- */
 
@@ -978,7 +731,6 @@ h2.display {
 
 .nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-size: 15px; }
 .nav-links a { color: var(--ink-2); text-decoration: none; }
-.nav-links a:hover { color: var(--safety-ink); }
 
 .legal h1 {
   font-family: var(--display);
@@ -1008,13 +760,8 @@ h2.display {
   .hero__grid,
   .split { grid-template-columns: minmax(0, 1fr); }
   .split--reverse .split__media { order: 0; }
-  .hero__media { max-width: 300px; margin-inline: auto; }
-  /* The shot used to sit above the ask, back when the ask was "join a waitlist"
-     and the picture was the only proof the app existed. The app ships now and
-     the ask is a download button, so on a phone the headline and that button
-     come first - above the fold - and the store card follows as support. */
-  .hero__media { order: 0; margin-top: 40px; }
-  .sheet__photos { grid-template-columns: repeat(3, 1fr); }
+  .hero__media { width: 100%; }
+  .phone { width: min(100%, 260px); }
   .scan__grid { grid-template-columns: repeat(4, 1fr); }
 
   /* Section nav becomes a one-swipe rail rather than disappearing. */
@@ -1033,9 +780,12 @@ h2.display {
 }
 
 @media (max-width: 560px) {
-  body { font-size: 16px; }
   .scan__grid { grid-template-columns: repeat(3, 1fr); }
-  .sheet__photos { grid-template-columns: repeat(2, 1fr); }
+  /* Logo and the one CTA; the section rail cost a second header row on phones. */
+  .topbar__links { display: none; }
+  .topbar__in { justify-content: space-between; }
+  .hero { padding-block: 28px 56px; }
+  .phone img { border-radius: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1045,13 +795,12 @@ h2.display {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .js .reveal { opacity: 1; transform: none; }
 }
 
 /* ---------- print (the legal pages get saved as PDFs) ---------- */
 
 @media print {
-  .topbar, .nav, .foot, .rail, .scan, .builder, .report { display: none; }
+  .topbar, .nav, .foot, .cta, .scan, .builder { display: none; }
   body { background: #fff; color: #000; font-size: 12pt; }
   .shell, .wrap { width: auto; max-width: none; padding: 0; }
   .legal a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10pt; }

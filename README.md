@@ -6,10 +6,11 @@ Deployment history: the site lived at `gsl0001.github.io/siteslog` (repo `gsl000
 
 ## Layout
 
-- `index.html` — the marketing page: features, interactive demos, the App Store screen rail, pricing, and the download call to action.
+- `index.html` — the marketing page: features, interactive demos, real 1.1 screens, pricing, FAQ, and one App Store call to action repeated after the proof blocks.
 - `styles.css` — shared by every page, including the legal pages. Palette, radii **and typefaces** come from the app's own theme tokens (`src/theme/appTheme.ts`): Bricolage Grotesque for display, Geist for body, Geist Mono for data. Changing one means changing the other.
+- `llms.txt` — plain-text product summary for AI crawlers; update it when pricing or features change.
 - `app.js` — interactions for the marketing page only. The legal pages load no JavaScript.
-- `assets/` — app screens cropped out of the App Store panels (`screen-*.jpg`), photo crops used by the demos, the self-hosted fonts, the favicon, and the 1200x630 share card.
+- `assets/` — `app-*.webp` are real 1.1 screens at 600px (the hero is a redacted capture from the owner's phone: the job is renamed "Maple St. Kitchen" and crew first names are placeholders), photo crops used by the demos, the self-hosted fonts, the favicon, and the 1200x630 share card.
 
 Required production routes:
 
@@ -27,34 +28,31 @@ The three woff2 files in `assets/` are the same families the app ships, served f
 ## The App Store call to action
 
 Recno shipped on 2026-09-04, so the page sells a download, not a waitlist. Every
-call to action points at `https://apps.apple.com/us/app/recno/id6785280739`. There
+call to action points at `https://apps.apple.com/app/id6785280739` (region-neutral, so Canadian and other visitors land on their own storefront). There
 is no form on the site any more and `app.js` no longer collects an address — if a
 signup ever comes back, disclose the processor in `docs/legal/privacy-policy.md`
 and `site/privacy/index.html` before shipping it.
 
 ## Screenshots must use invented data
 
-`assets/screen-*.jpg` are the app screens cut out of the App Store panels in
-`docs/store/screenshots/asc/` — crop box `(75, 853, 1140, 1943)`, then resized to
-560px wide. Those panels were rebuilt specifically so every company, address and
-crew name in them is fictional.
+The page shows three real 1.1 screens as 600px WebP, with no CSS device frame:
+each capture includes the status bar and Dynamic Island, so the image reads as
+the phone.
 
-The panels bake their headline into the image. The site does not use them whole:
-the screen goes in a CSS device frame and the headline is real HTML above it, so
-the words are selectable, translatable and reachable by a screen reader. Panels
-01 (a photo collage, no device) and 02 (two overlapping cards, both clipped by
-the panel edge) cannot yield a single clean screen, which is why the rail shows
-five and not seven.
-
-The crop is the top of a taller screen, so every frame is square-cropped at the
-bottom on purpose — see the comment on `.phone` in `styles.css`.
+- `app-home.webp` is a capture from the owner's own phone, redacted: the real
+  job address is replaced by "Maple St. Kitchen" (Bricolage Grotesque 700 at the
+  app's 20pt / -0.4 spacing) and two real crew first names by "Marco" and
+  "Mike", rebuilt from glyphs already in the screenshot. Any new capture from a
+  real phone needs the same treatment before it ships.
+- `app-report-type.webp` and `app-timesheet.webp` come from simulator runs whose
+  test data was patched to the invented "Maple St. Kitchen" job.
 
 The two images they replaced (`01-sifter.webp`, `07-daily-log.webp`) were built
 from real device captures and published real client addresses — "4128 Maple Ave,
 Delta", "6410 Fraser Way, Langley" — plus real crew first names, on a public
 marketing site, for months. Do not source site imagery from
 `docs/store/screenshots/source/b90-*.png`: those are real captures and carry the
-same problem. Regenerate from the `asc/` panels instead.
+same problem. Use simulator captures with invented data, or redact a real capture as above.
 
 ## Interactive demos
 

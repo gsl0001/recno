@@ -1,0 +1,27 @@
+# Recno
+
+> Recno ("Record your work") is an iPhone app for small contractors that files jobsite photos to the right job and turns a day's work into a report you can send. Local-first: no account, works offline, records stay on the phone.
+
+- App Store: https://apps.apple.com/app/id6785280739
+- Price: free to download. Recno Pro is $14.99/month or $99.99/year (USD); the annual plan includes a 14-day free trial for eligible accounts.
+- Platform: iPhone only. No Android version.
+
+## What it does
+
+- Camera: preselects the job you are standing on and stamps photos with job name, date and time, coordinates and weather. Markup, notes, voice memos, categories, video.
+- Sifter (Pro): scans the existing camera roll, matches photos taken near a saved job, and queues them for approval.
+- Reports (Pro): three steps (choose, check the evidence, preview). Five audiences (client update, internal progress, general contractor, inspector, change-order evidence) and four templates (daily progress, before/after, punch list, photo log). PDF, HTML or CSV with your logo; report history for re-sending.
+- Customer OK: long-press the shutter for an on-site customer signature on an extra or selection; prints in reports.
+- Crew time clock with arrival and as-left photos; timesheets weekly, biweekly or monthly with overtime and break rules (timesheet export is Pro); a daily log timeline; punch lists; before/after comparison; job map.
+- Automatic backup to the app's private iCloud container, on by default.
+
+## Pages
+
+- [Home](https://gsl0001.github.io/recno/): features, pricing, FAQ
+- [Free photo report tool](https://gsl0001.github.io/recno/photo-report/): make a PDF from photos in the browser, no account or upload
+- [Privacy policy](https://gsl0001.github.io/recno/privacy/): what leaves the device and when
+- [Support](https://gsl0001.github.io/recno/support/)
+- [Delete data](https://gsl0001.github.io/recno/delete-data/)
+- [Terms](https://gsl0001.github.io/recno/terms/)
+
+Contact: gsl456789@gmail.com

@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recno - Jobsite photos, filed to the right job</title>
-  <meta name="description" content="Recno files jobsite photos to the right job, clocks the crew on site, and turns the day into a report you can send. On the App Store for iPhone. Works offline, no account.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Recno: Job Site Photo Reports for Contractors (iPhone)</title>
+  <meta name="description" content="Recno files jobsite photos to the right job and turns a day's work into a PDF, HTML or CSV report you can send. Built for small contractors. Free on iPhone, works offline.">
   <meta name="theme-color" content="#f5f4f2">
-  <meta name="apple-itunes-app" content="app-id=6785280739">
   <link rel="canonical" href="https://gsl0001.github.io/recno/">
-  <meta property="og:title" content="Recno - Jobsite photos, filed to the right job">
-  <meta property="og:description" content="Jobsite photos filed to the right job, crew hours clocked on site, and reports you can send the same day. On the App Store for iPhone.">
+  <meta property="og:title" content="Recno - Record your work">
+  <meta property="og:description" content="Jobsite photos filed to the right job, and reports you can send the same day. Built for small contractors.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Recno">
   <meta property="og:url" content="https://gsl0001.github.io/recno/">
@@ -18,11 +19,30 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Recno - every photo, filed to the right job.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="apple-itunes-app" content="app-id=6785280739">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/screen-today.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/app-home.webp" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Recno",
+    "alternateName": "Recno: Job Site Photo Reports",
+    "description": "Jobsite photo documentation for small contractors: photos filed to the right job, a crew time clock, a daily log, and PDF, HTML and CSV reports. Works offline, no account.",
+    "operatingSystem": "iOS",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://gsl0001.github.io/recno/",
+    "downloadUrl": "https://apps.apple.com/app/id6785280739",
+    "image": "https://gsl0001.github.io/recno/assets/og-card.png",
+    "offers": [
+      { "@type": "Offer", "name": "Recno", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Recno Pro Monthly", "price": "14.99", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Recno Pro Annual", "price": "99.99", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -35,11 +55,10 @@
         <a href="#capture">Capture</a>
         <a href="#reports">Reports</a>
         <a href="#crew">Crew</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#screens">Screens</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn--sm" href="https://apps.apple.com/us/app/recno/id6785280739">Get it on the App Store</a>
+      <a class="btn btn--sm" href="https://apps.apple.com/app/id6785280739">Get it free</a>
     </div>
   </header>
 
@@ -49,29 +68,28 @@
     <section class="wrap hero">
       <div class="hero__grid">
         <div>
-          <p class="eyebrow eyebrow--stamp">Now on the App Store &middot; iPhone &middot; free to download</p>
+          <p class="eyebrow">For contractors who take the photos themselves</p>
           <h1 class="display">Every photo, filed to the <span class="accent">right job.</span></h1>
-          <p class="lead">Try Recno on one real job: create the job, take one wide shot and two details, then find those photos together for the next client update. Capture and filing are free, work offline, and need no account.</p>
+          <p class="lead">You shoot, Recno files. It finds the work photos already buried in your camera roll and turns the day into a report you can send before you leave the truck.</p>
 
-          <div class="cta">
-            <a class="btn btn--lg" href="https://apps.apple.com/us/app/recno/id6785280739">Get Recno on the App Store</a>
-            <p class="cta__note">Free to download. Recno Pro adds Sifter and report export. See the App Store for pricing in your region.</p>
+          <div class="cta hero__cta">
+            <a class="btn" href="https://apps.apple.com/app/id6785280739">Get Recno free on the App Store</a>
+            <p class="cta__hint">Free to download for iPhone. Recno Pro is $14.99 a month or $99.99 a year, cancel any time in your Apple Account.</p>
           </div>
 
           <p class="hero__meta">
             <span>iPhone</span>
             <span>Works offline</span>
             <span>No account to create</span>
-            <span>Records stay on the phone</span>
           </p>
         </div>
 
         <div class="hero__media">
           <div class="shot">
-            <div class="phone phone--hero">
-              <img src="assets/screen-today.jpg" width="560" height="954" alt="The Recno daily log: a timeline of the day showing photos, clock-in entries and the job each one belongs to, every entry stamped with the site and the weather." fetchpriority="high">
+            <div class="phone phone--lg">
+              <img src="assets/app-home.webp" width="600" height="1300" alt="The Recno home screen: You are at Maple St. Kitchen, the time clock, shortcuts to the daily log, Sifter, job map and timesheet, a photo Sifter found in the gallery, and recent crew clock-outs." fetchpriority="high">
             </div>
-            <p class="shot__cap"><b>Daily log</b>Tuesday &mdash; 14 media, 2 sites, 27h 30m on the clock</p>
+            <p class="shot__cap"><b>Home</b>Knows which job you are standing on</p>
           </div>
         </div>
       </div>
@@ -80,17 +98,17 @@
     <!-- ================= STRIP ================= -->
     <section class="wrap" aria-label="At a glance">
       <div class="strip">
-        <div class="stat reveal">
+        <div class="stat">
           <p class="stat__num"><span>0</span></p>
           <p class="stat__label">Accounts, logins or servers to set up</p>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <p class="stat__num">3</p>
           <p class="stat__label">Report formats: PDF, HTML and CSV</p>
         </div>
-        <div class="stat reveal">
-          <p class="stat__num">Offline</p>
-          <p class="stat__label">Capture, file and report with no signal</p>
+        <div class="stat">
+          <p class="stat__num">14</p>
+          <p class="stat__label">Days free with the annual plan, for eligible accounts</p>
         </div>
       </div>
     </section>
@@ -99,9 +117,9 @@
     <section class="band band--dark" id="sifter">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--dark eyebrow--stamp">Sifter &middot; 6 found near a saved job</p>
-          <h2 class="display">Your camera roll is the jobsite record. It just isn't sorted.</h2>
-          <p class="lead">Sifter looks through the photos already on your phone, matches the ones taken near a saved job, and stacks them for you to approve. Nothing is filed without you saying yes.</p>
+          <p class="eyebrow eyebrow--dark">01 / The photos you already took</p>
+          <h2 class="display">Sort jobsite photos from your camera roll by job.</h2>
+          <p class="lead">Your camera roll is the jobsite record. It just isn't sorted. Sifter matches the photos taken near a saved job and stacks them for you to approve. Nothing is filed without you saying yes.</p>
         </div>
 
         <div class="split">
@@ -148,8 +166,8 @@
     <section class="band" id="capture">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--stamp">Camera &middot; 1840 Alder St &middot; 68&deg;F &middot; progress</p>
-          <h2 class="display">Proof, stamped as you shoot.</h2>
+          <p class="eyebrow">02 / Shooting on site</p>
+          <h2 class="display">Stamp jobsite photos with date, GPS and weather.</h2>
           <p class="lead">Open the camera and Recno already knows which job you are standing on. Every shot lands in that job with the details burned in, so a photo still means something six months later.</p>
         </div>
 
@@ -192,6 +210,10 @@
                 <strong>Categories, favorites, video</strong>
                 <p>Tag a shot as demo, rough-in, damage or done. Star the ones that matter. Video works the same way.</p>
               </li>
+              <li>
+                <strong>The customer&rsquo;s OK, on the spot</strong>
+                <p>Long-press the shutter and the customer signs off an extra or a selection on your phone. The signed record, with time and place, prints in every report. If they won&rsquo;t sign, that is recorded too.</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -202,81 +224,19 @@
     <section class="band band--paper" id="reports">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--stamp">Reports &middot; PDF, HTML, CSV &middot; saved to history</p>
-          <h2 class="display">The day, on one page.</h2>
-          <p class="lead">Pick what goes in and Recno builds it. Send the PDF to the homeowner, the CSV to your bookkeeper, and keep the history so you can re-send any of it later.</p>
+          <p class="eyebrow">03 / What you send</p>
+          <h2 class="display">Send a daily construction report as a PDF.</h2>
+          <p class="lead">Three steps: choose who it is for, check the evidence, preview. Send the PDF to the homeowner, the CSV to your bookkeeper, and keep the history so you can re-send any of it later.</p>
         </div>
 
         <div class="split">
           <div>
-            <div class="report" id="report">
-              <div class="report__bar" role="group" aria-label="Report format">
-                <button class="tab" type="button" data-fmt="pdf" aria-pressed="true">PDF</button>
-                <button class="tab" type="button" data-fmt="html" aria-pressed="false">HTML</button>
-                <button class="tab" type="button" data-fmt="csv" aria-pressed="false">CSV</button>
+            <div class="shot">
+              <div class="phone">
+                <img src="assets/app-report-type.webp" width="600" height="1304" alt="The Recno report builder, step one: choose the audience, such as client update or change-order evidence, and a template, such as daily progress or before and after." loading="lazy">
               </div>
-
-              <div class="sheet" id="sheet">
-                <div class="sheet__head">
-                  <div>
-                    <p class="sheet__logo">Fair Oak Builders</p>
-                    <p class="sheet__meta">Daily report &middot; Henderson Kitchen</p>
-                  </div>
-                  <p class="sheet__meta sheet__meta--right">Aug 14, 2026<br>Prepared by M. Reyes</p>
-                </div>
-
-                <div class="sheet__block" data-block="photos">
-                  <p class="sheet__label">Photos &mdash; 8 of 8</p>
-                  <div class="sheet__photos">
-                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
-                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
-                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
-                    <div class="sheet__photo"></div><div class="sheet__photo"></div>
-                  </div>
-                </div>
-
-                <div class="sheet__block" data-block="notes">
-                  <p class="sheet__label">Notes</p>
-                  <p class="sheet__note">Rough-in inspected and signed off. Water damage behind the sink base is worse than quoted &mdash; photographed for the change order.</p>
-                </div>
-
-                <div class="sheet__block" data-block="hours">
-                  <p class="sheet__label">Crew hours</p>
-                  <div class="sheet__rows">
-                    <div class="sheet__row"><span>M. Reyes</span><b>8.0 h</b></div>
-                    <div class="sheet__row"><span>J. Okafor</span><b>7.5 h</b></div>
-                    <div class="sheet__row"><span>Day total</span><b>15.5 h</b></div>
-                  </div>
-                </div>
-
-                <div class="sheet__block" data-block="punch">
-                  <p class="sheet__label">Punch list</p>
-                  <div class="sheet__rows">
-                    <div class="sheet__row"><span>Replace sink base panel</span><b>Open</b></div>
-                    <div class="sheet__row"><span>Cap stub-out</span><b>Done</b></div>
-                  </div>
-                </div>
-
-                <pre class="sheet__csv" data-block="csv" hidden>date,project,worker,hours,cost
-2026-08-14,Henderson Kitchen,M. Reyes,8.0,392.00
-2026-08-14,Henderson Kitchen,J. Okafor,7.5,337.50</pre>
-
-                <p class="sheet__empty" data-empty hidden>Nothing selected</p>
-              </div>
-
-              <div class="report__foot">
-                <span data-report-foot>PDF &middot; 8 photos &middot; ready to share</span>
-                <span>Saved to report history</span>
-              </div>
+              <p class="shot__cap"><b>Build report</b>Step one: who it is for, and how it is laid out</p>
             </div>
-
-            <div class="chips" role="group" aria-label="Report sections">
-              <button class="chip" type="button" data-block-toggle="photos" aria-pressed="true">Photos</button>
-              <button class="chip" type="button" data-block-toggle="notes" aria-pressed="true">Notes</button>
-              <button class="chip" type="button" data-block-toggle="hours" aria-pressed="true">Crew hours</button>
-              <button class="chip" type="button" data-block-toggle="punch" aria-pressed="true">Punch list</button>
-            </div>
-            <p class="section-note">Toggle sections and formats to see how a report is put together.</p>
           </div>
 
           <div>
@@ -284,6 +244,14 @@
               <li>
                 <strong>Try a free photo report now</strong>
                 <p><a href="photo-report/">Open the browser builder</a> to make a PDF from your photos. It needs no account or upload and is separate from Recno's Pro in-app export.</p>
+              </li>
+              <li>
+                <strong>Five audiences</strong>
+                <p>Client update, internal progress, general contractor, inspector, or change-order evidence. Each one puts in what that reader needs.</p>
+              </li>
+              <li>
+                <strong>Four templates</strong>
+                <p>Daily progress grouped by day, before and after side by side, a punch list of open issues, or a captioned photo log.</p>
               </li>
               <li>
                 <strong>Your company on the page</strong>
@@ -297,12 +265,13 @@
                 <strong>An end-of-day nudge</strong>
                 <p>Optional reminder that opens the day's report with the busiest job already selected, so it goes out the same day.</p>
               </li>
-              <li>
-                <strong>Choose the audience</strong>
-                <p>A client-facing summary and an internal record need different things in them. Choose per report.</p>
-              </li>
             </ul>
           </div>
+        </div>
+
+        <div class="cta cta--inline">
+          <a class="btn" href="https://apps.apple.com/app/id6785280739">Get Recno free on the App Store</a>
+          <p class="cta__hint">Capture, filing, the daily log and the time clock are free. Report export, Sifter and timesheet export come with Pro.</p>
         </div>
       </div>
     </section>
@@ -311,8 +280,8 @@
     <section class="band" id="crew">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--stamp">Crew clock &middot; 4 on site &middot; 27h 30m</p>
-          <h2 class="display">Who was on site, and for how long.</h2>
+          <p class="eyebrow">04 / Hours and the day</p>
+          <h2 class="display">A crew time clock with timesheets by job.</h2>
           <p class="lead">Clock the crew in at the job, watch the day build itself as a timeline, and pull the hours out as a costed sheet when it is time to invoice.</p>
         </div>
 
@@ -320,9 +289,9 @@
           <div class="split__media">
             <div class="shot">
               <div class="phone">
-                <img src="assets/screen-crew.jpg" width="560" height="954" alt="The Recno crew clock: four crew members on site at 1840 Alder St since 7:02 am, with a clock out button and the week's hours." loading="lazy">
+                <img src="assets/app-timesheet.webp" width="600" height="1304" alt="The Recno timesheet for September 2026: 8 hours 30 minutes at Maple St. Kitchen, 7:00 AM to 3:30 PM, with an export button." loading="lazy">
               </div>
-              <p class="shot__cap"><b>Crew clock</b>Four on site since 7:02 am, 27h 30m on the day</p>
+              <p class="shot__cap"><b>Timesheet</b>Weekly, biweekly or monthly, by person and job</p>
             </div>
           </div>
 
@@ -334,7 +303,11 @@
               </li>
               <li>
                 <strong>Timesheets and labor cost</strong>
-                <p>Hours roll up by person, by job and by month, with a costed export when you need to bill or run payroll.</p>
+                <p>Hours roll up weekly, biweekly or monthly, by person and by job. Overtime, workweek, pay period and break rules live in the timesheet. Export a costed sheet with Pro when you bill or run payroll.</p>
+              </li>
+              <li>
+                <strong>Arrival and as-left photos</strong>
+                <p>Clocking in offers four quick shots of the entry, floor, work area and street before you touch anything. Clocking out asks for one &ldquo;as left&rdquo; photo.</p>
               </li>
               <li>
                 <strong>The daily log</strong>
@@ -354,32 +327,32 @@
     <section class="band band--paper">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--stamp">Jobs &middot; map &middot; search &middot; punch list &middot; backup</p>
-          <h2 class="display">The parts you find out you need.</h2>
+          <p class="eyebrow">05 / The rest of it</p>
+          <h2 class="display">More jobsite tools for small contractors.</h2>
         </div>
 
         <div class="cards">
-          <div class="card reveal">
+          <div class="card">
             <h3>Every job, mapped</h3>
             <p>Save each job with its address and radius. See them all on a map, sort by what is active, and archive the finished ones.</p>
           </div>
-          <div class="card reveal">
-            <h3>Search that works</h3>
-            <p>Search notes, jobs and reports. Filter a job's photos by category, date or favorite when you need the one shot.</p>
+          <div class="card">
+            <h3>Photos by day</h3>
+            <p>A job opens on its photos, grouped by day with the time you were on site, or as a grid or by tag. Search notes, jobs and reports when you need the one shot.</p>
           </div>
-          <div class="card reveal">
+          <div class="card">
             <h3>Before and after</h3>
             <p>Put the demo shot next to the finished shot side by side. The comparison sells the work better than a paragraph.</p>
           </div>
-          <div class="card reveal">
+          <div class="card">
             <h3>Punch list</h3>
             <p>Track what is still open on a job, tick items off as they are done, and drop the list into a report.</p>
           </div>
-          <div class="card reveal">
+          <div class="card">
             <h3>Automatic backup</h3>
             <p>On by default. Backups go to your own private iCloud container, and Recno keeps a copy on the phone when iCloud is not reachable. Switch it off any time.</p>
           </div>
-          <div class="card reveal">
+          <div class="card">
             <h3>Built for no bars</h3>
             <p>Basements, new builds, rural lots. Capture, filing and reports all work with no connection, because the records live on the phone.</p>
           </div>
@@ -391,9 +364,9 @@
     <section class="band band--dark" id="privacy">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--dark eyebrow--stamp">Storage &middot; on device &middot; no account</p>
-          <h2 class="display">On your phone. Not on our server.</h2>
-          <p class="lead">Recno has no accounts and no sync service, because there is nothing on our side to sync to. Here is what leaves the device, and when.</p>
+          <p class="eyebrow eyebrow--dark">06 / Where your work lives</p>
+          <h2 class="display">Where does Recno store my jobsite photos?</h2>
+          <p class="lead">On your phone, not on our server. Recno has no accounts and no sync service, because there is nothing on our side to sync to. Here is what leaves the device, and when.</p>
         </div>
 
         <div class="truths">
@@ -427,90 +400,80 @@
       </div>
     </section>
 
-    <!-- ================= SCREENS ================= -->
-    <section class="band band--paper" id="screens">
-      <div class="wrap">
-        <div class="head">
-          <p class="eyebrow eyebrow--stamp">Five screens &middot; straight from the app</p>
-          <h2 class="display">The app, screen by screen.</h2>
-          <p class="lead">Real screens, nothing mocked up around them. Every company, address and crew name you can see is invented &mdash; we are not going to publish a real client&rsquo;s jobsite to sell you an app.</p>
-        </div>
-
-        <ul class="rail" role="list">
-          <li class="rail__item">
-            <h3 class="rail__title">A clean PDF before you leave the gate.</h3>
-            <p class="rail__sub">Photos, hours and materials in one report your client can actually read.</p>
-            <div class="phone">
-              <img src="assets/screen-report.jpg" width="560" height="954" loading="lazy" alt="A finished Recno PDF report for 1840 Alder St: photo count, hours on the clock, a summary of work, the crew hours table and the media log.">
-            </div>
-          </li>
-          <li class="rail__item">
-            <h3 class="rail__title">Clock the crew in on site.</h3>
-            <p class="rail__sub">Geofenced time, per person, per job, exported for payroll.</p>
-            <div class="phone">
-              <img src="assets/screen-crew.jpg" width="560" height="954" loading="lazy" alt="The Recno crew clock: four crew on site, the job location, a clock out button, and crew hours for the week.">
-            </div>
-          </li>
-          <li class="rail__item">
-            <h3 class="rail__title">Pick who it is for. Recno writes it up.</h3>
-            <p class="rail__sub">Client update, GC progress, inspector, or change-order evidence.</p>
-            <div class="phone">
-              <img src="assets/screen-builder.jpg" width="560" height="954" loading="lazy" alt="The Recno report builder: a project picker, audience options for client, internal, general contractor, inspector and change order, and template choices.">
-            </div>
-          </li>
-          <li class="rail__item">
-            <h3 class="rail__title">The whole day on one timeline.</h3>
-            <p class="rail__sub">Photos, hours and sites in the order they happened.</p>
-            <div class="phone">
-              <img src="assets/screen-today.jpg" width="560" height="954" loading="lazy" alt="The Recno daily log: the day as a timeline of photos and clock-in entries, each stamped with the job, the time and the weather.">
-            </div>
-          </li>
-          <li class="rail__item">
-            <h3 class="rail__title">No account. Works offline.</h3>
-            <p class="rail__sub">Your records live on your phone, backed up to your own iCloud.</p>
-            <div class="phone">
-              <img src="assets/screen-home.jpg" width="560" height="954" loading="lazy" alt="The Recno home screen: an offline pill, a green card confirming the backup is protected in your own iCloud, photo and job counts, and quick actions.">
-            </div>
-          </li>
-        </ul>
-        <p class="section-note">Scroll sideways for the rest.</p>
-      </div>
-    </section>
-
     <!-- ================= PRICING ================= -->
     <section class="band" id="pricing">
       <div class="wrap">
         <div class="head">
-          <p class="eyebrow eyebrow--stamp">Recno Pro &middot; Monthly or annual subscription</p>
-          <h2 class="display">Free to record. Pro to sift and send.</h2>
-          <p class="lead">Recno Pro is an auto-renewing subscription through the App Store. No account to create either way.</p>
+          <p class="eyebrow">07 / What it costs</p>
+          <h2 class="display">How much does Recno cost?</h2>
+          <p class="lead">Free to record. Pro to sift and send. The annual plan works out to $8.33 a month &mdash; one photo that settles a disputed change order pays for years of it.</p>
         </div>
 
         <div class="plan">
           <div class="plan__item">
-            <p class="plan__k">Without Pro</p>
-            <p>Capture and file photos, the daily log, crew time clock, punch lists and automatic backup.</p>
+            <p class="plan__k">Free</p>
+            <p>Capture and file photos, the daily log, crew time clock and timesheet totals, punch lists, the customerpunch lists, customer sign-off and automatic backup.</p>rsquo;s OK from the camera, and automatic backup.</p>
           </div>
           <div class="plan__item">
             <p class="plan__k">Recno Pro</p>
-            <p><strong>Monthly and annual plans.</strong> Adds Sifter and report export &mdash; PDF, HTML and CSV. See the App Store for current pricing in your region.</p>
+            <p><strong>$14.99 a month or $99.99 a year.</strong> Adds Sifter, report export (PDF, HTML and CSV), timesheet export and Optimize Storage for archived jobs.</p>
           </div>
           <div class="plan__item">
             <p class="plan__k">Free trial</p>
             <p>A 14-day free trial comes with the annual plan, when Apple marks your account eligible for it.</p>
           </div>
         </div>
+
+        <div class="cta cta--inline">
+          <a class="btn" href="https://apps.apple.com/app/id6785280739">Get Recno free on the App Store</a>
+          <p class="cta__hint">Cancel any time in your Apple Account settings. Cancel before the trial ends and you are not charged. Prices are in USD; the App Store shows your local price.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="band band--paper" id="faq">
+      <div class="wrap">
+        <div class="head">
+          <p class="eyebrow">08 / Before you download</p>
+          <h2 class="display">Questions contractors ask first.</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Do I or my crew need an account?</summary>
+            <p>No. There is no sign-up and no login. You clock the crew in and out from your own phone, so they don't need the app installed.</p>
+          </details>
+          <details>
+            <summary>Does it work without cell signal?</summary>
+            <p>Yes. Capture, filing, the daily log and reports all work offline because the records live on the phone. Weather stamps and address search are the parts that need a connection.</p>
+          </details>
+          <details>
+            <summary>What happens to my photos if I lose or replace my phone?</summary>
+            <p>Automatic backup is on by default and saves to Recno's private iCloud container under your Apple Account. You can also export a backup file yourself before switching phones. See <a href="support/">Support</a> for the details.</p>
+          </details>
+          <details>
+            <summary>Is there an Android version?</summary>
+            <p>Not yet. Recno is iPhone only.</p>
+          </details>
+          <details>
+            <summary>What do I get free, and can I cancel Pro?</summary>
+            <p>Capture, filing, the daily log, the crew time clock, punch lists and backup are free. Pro adds Sifter, report export and timesheet export. It is an App Store subscription, so you cancel it in your Apple Account settings like any other.</p>
+          </details>
+        </div>
       </div>
     </section>
 
     <!-- ================= GET IT ================= -->
-    <section class="band band--dark" id="get">
+    <section class="band" id="get">
       <div class="wrap join">
-        <p class="eyebrow eyebrow--dark eyebrow--stamp">Free to download &middot; iPhone</p>
-        <h2 class="display">Put it on the truck phone tonight.</h2>
-        <p class="lead">Recno is on the App Store. There is no account to create, nothing to set up on a computer, and the records stay on the phone where you took them.</p>
-        <p class="join__cta"><a class="btn btn--lg" href="https://apps.apple.com/us/app/recno/id6785280739">Get Recno on the App Store</a></p>
-        <p class="section-note">Something not working, or a question first? <a href="mailto:gsl456789@gmail.com">gsl456789@gmail.com</a></p>
+        <p class="eyebrow">On the App Store now</p>
+        <h2 class="display">Record your work.</h2>
+        <p class="lead">Install it, save your first job, and the next photo you take files itself.</p>
+        <div class="cta">
+          <a class="btn" href="https://apps.apple.com/app/id6785280739">Get Recno free on the App Store</a>
+          <p class="cta__hint">Questions first? Email <a href="mailto:gsl456789@gmail.com">gsl456789@gmail.com</a>.</p>
+        </div>
       </div>
     </section>
 
@@ -522,7 +485,6 @@
         <div>
           <a class="mark" href="./"><svg class="mark__icon" viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#11141a"/><g fill="#fbf8f1"><path d="M12 22V12h10v4h-6v6z"/><path d="M42 12h10v10h-4v-6h-6z"/><path d="M12 42v10h10v-4h-6v-6z"/><path d="M52 42v10H42v-4h6v-6z"/><rect x="30.6" y="13" width="2.9" height="6" rx="1.4"/><rect x="30.6" y="45" width="2.9" height="6" rx="1.4"/><rect x="13" y="30.6" width="6" height="2.9" rx="1.4"/><rect x="45" y="30.6" width="6" height="2.9" rx="1.4"/></g><circle cx="32" cy="32" r="6" fill="#e54a14"/></svg><span>Recno</span></a>
           <p class="section-note">Record your work</p>
-          <p class="foot__store"><a href="https://apps.apple.com/us/app/recno/id6785280739">Get it on the App Store</a></p>
         </div>
         <nav class="foot__links" aria-label="Site">
           <a href="photo-report/">Free photo report tool</a>
@@ -540,4 +502,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
