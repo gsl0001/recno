@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Free before and after photo maker for contractors | Recno</title>
+    <meta
+      name="description"
+      content="Put a before and after job photo side by side, add labels and a caption, and download an image ready for Facebook, Instagram or a client text. Free, no account, photos never leave your device."
+    />
+    <link rel="canonical" href="https://recno.app/before-after/" />
+    <meta name="apple-itunes-app" content="app-id=6785280739" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Recno" />
+    <meta property="og:title" content="Free before and after photo maker for contractors" />
+    <meta property="og:description" content="Two job photos in, one share-ready before/after image out. No account, no uploads." />
+    <meta property="og:url" content="https://recno.app/before-after/" />
+    <meta property="og:image" content="https://recno.app/assets/og-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../photo-report/report.css" />
+    <style>
+      .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .picker img { display: block; width: 100%; max-height: 220px; object-fit: contain; margin-top: 12px; border-radius: 6px; background: #e9e6df; }
+      .check { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+      .check input { width: auto; margin: 0; }
+      #preview { display: block; width: 100%; height: auto; border-radius: 8px; background: #e9e6df; }
+      @media (max-width: 600px) { .pair { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="../"><img src="../assets/favicon.svg" width="36" height="36" alt="" />recno.</a
+      ><span>FREE FIELD TOOL / 02</span>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">SHOW THE WORK.</p>
+        <h1>Before. After.<br />One image.</h1>
+        <p>
+          Pick two job photos and get a side-by-side or stacked image with labels, ready to post or text to a
+          client. Everything happens in your browser: no account, and your photos are never uploaded.
+        </p>
+      </section>
+
+      <section class="editor" aria-label="Photos">
+        <div class="section-head"><span class="step">01</span><h2>Your two photos</h2></div>
+        <div class="pair">
+          <label class="picker">Before photo<input id="before" type="file" accept="image/*,.heic,.heif" /><img id="before-thumb" alt="" hidden /></label>
+          <label class="picker">After photo<input id="after" type="file" accept="image/*,.heic,.heif" /><img id="after-thumb" alt="" hidden /></label>
+        </div>
+        <p class="hint">Tip: take the after shot from the same spot and height as the before shot. It reads instantly.</p>
+      </section>
+
+      <section class="editor" aria-label="Layout">
+        <div class="section-head"><span class="step">02</span><h2>Layout</h2></div>
+        <div class="fields">
+          <label>Shape
+            <select id="layout">
+              <option value="side">Side by side (2000 × 1000, feed posts and texts)</option>
+              <option value="stack">Stacked (1080 × 1920, Stories, Reels, Shorts)</option>
+            </select>
+          </label>
+          <label>Caption (optional)<input id="caption" maxlength="80" placeholder="e.g. Bathroom retile, 3 days" /></label>
+        </div>
+        <label class="check"><input id="labels" type="checkbox" checked />Show BEFORE / AFTER labels</label>
+        <label class="check"><input id="mark" type="checkbox" checked />Add a small "made with recno.app" mark</label>
+      </section>
+
+      <section class="editor" aria-label="Result">
+        <div class="section-head"><span class="step">03</span><h2>Download</h2></div>
+        <canvas id="preview" width="2000" height="1000" aria-label="Before and after preview"></canvas>
+        <p id="status" class="hint" role="status">Pick both photos to see the result.</p>
+        <div class="toolbar">
+          <button id="download" disabled>Download image</button><button id="share" class="secondary" disabled hidden>Share…</button>
+        </div>
+        <p class="hint">
+          Only post photos you have the owner's permission to share, and leave out house numbers or anything
+          that identifies the client.
+        </p>
+      </section>
+
+      <aside>
+        <p class="eyebrow">ON YOUR IPHONE</p>
+        <p>
+          Recno files every jobsite photo under the right job as you take it, so the before shot is there when
+          the job is done. Offline, no account. Capture and filing are free.
+          <a href="https://apps.apple.com/app/apple-store/id6785280739?pt=129096683&amp;ct=BeforeAfterOct2026&amp;mt=8">Get Recno on the App Store</a>.
+        </p>
+        <p class="hint">More free tools: <a href="../photo-report/">photo report builder</a> · <a href="../job-photo-checklist/">job photo checklist</a></p>
+      </aside>
+    </main>
+    <footer class="hint"><a href="../">Recno</a> · <a href="../privacy/">Privacy</a> · Photos are processed on your device and never sent anywhere.</footer>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const canvas = $('preview');
+      const ctx = canvas.getContext('2d');
+      const photos = { before: null, after: null };
+      const sizes = { side: [2000, 1000], stack: [1080, 1920] };
+
+      // Draws img to fill the box, cropping the overflow evenly (CSS object-fit: cover).
+      function cover(img, x, y, w, h) {
+        const s = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+        const sw = w / s, sh = h / s;
+        ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) / 2, sw, sh, x, y, w, h);
+      }
+
+      function pill(text, x, y, size, bg, fg) {
+        ctx.font = `700 ${size}px Geist, system-ui, sans-serif`;
+        const pad = size * 0.55, w = ctx.measureText(text).width + pad * 2, h = size * 1.7;
+        ctx.fillStyle = bg;
+        ctx.beginPath();
+        ctx.roundRect(x, y, w, h, h / 2);
+        ctx.fill();
+        ctx.fillStyle = fg;
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, x + pad, y + h / 2 + size * 0.04);
+        return w;
+      }
+
+      function render() {
+        const [W, H] = sizes[$('layout').value];
+        canvas.width = W;
+        canvas.height = H;
+        ctx.fillStyle = '#e9e6df';
+        ctx.fillRect(0, 0, W, H);
+        const side = W > H;
+        const gap = 8;
+        const boxes = side
+          ? [[0, 0, (W - gap) / 2, H], [(W + gap) / 2, 0, (W - gap) / 2, H]]
+          : [[0, 0, W, (H - gap) / 2], [0, (H + gap) / 2, W, (H - gap) / 2]];
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(side ? (W - gap) / 2 : 0, side ? 0 : (H - gap) / 2, side ? gap : W, side ? H : gap);
+
+        ['before', 'after'].forEach((key, i) => {
+          const [x, y, w, h] = boxes[i];
+          if (photos[key]) cover(photos[key], x, y, w, h);
+          if ($('labels').checked) pill(key.toUpperCase(), x + 32, y + 32, side ? 44 : 48, i ? '#c43b10' : '#191b1e', '#ffffff');
+        });
+
+        const caption = $('caption').value.trim();
+        if (caption) {
+          ctx.font = `700 ${side ? 46 : 50}px Geist, system-ui, sans-serif`;
+          const w = Math.min(ctx.measureText(caption).width + 60, W - 64);
+          const h = side ? 84 : 92;
+          const y = side ? H - h - 32 : (H - h) / 2;
+          ctx.fillStyle = 'rgba(25, 27, 30, 0.82)';
+          ctx.beginPath();
+          ctx.roundRect((W - w) / 2, y, w, h, 14);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(caption, W / 2, y + h / 2 + 2, w - 60);
+          ctx.textAlign = 'left';
+        }
+
+        if ($('mark').checked) {
+          ctx.font = `600 ${side ? 26 : 28}px Geist, system-ui, sans-serif`;
+          const text = 'made with recno.app';
+          const tw = ctx.measureText(text).width;
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+          ctx.beginPath();
+          ctx.roundRect(W - tw - 52, H - 62, tw + 32, 44, 10);
+          ctx.fill();
+          ctx.fillStyle = '#ffffff';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(text, W - tw - 36, H - 39);
+        }
+
+        const ready = photos.before && photos.after;
+        $('download').disabled = $('share').disabled = !ready;
+        $('status').textContent = ready ? `Ready: ${W} × ${H} JPG.` : 'Pick both photos to see the result.';
+      }
+
+      function load(key, file) {
+        if (!file) return;
+        const img = new Image();
+        img.onload = () => {
+          photos[key] = img;
+          $(`${key}-thumb`).src = img.src;
+          $(`${key}-thumb`).hidden = false;
+          render();
+        };
+        img.onerror = () => {
+          $('status').textContent = `${file.name} could not be read. For HEIC photos use Safari, or export the photo as JPG.`;
+        };
+        img.src = URL.createObjectURL(file);
+      }
+
+      const blob = () => new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.9));
+      const fileName = () => `before-after-${new Date().toLocaleDateString('en-CA')}.jpg`;
+
+      $('before').addEventListener('change', (e) => load('before', e.target.files[0]));
+      $('after').addEventListener('change', (e) => load('after', e.target.files[0]));
+      for (const id of ['layout', 'labels', 'mark', 'caption']) $(id).addEventListener('input', render);
+
+      $('download').addEventListener('click', async () => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(await blob());
+        a.download = fileName();
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 10_000);
+      });
+
+      const probe = new File([''], 'x.jpg', { type: 'image/jpeg' });
+      if (navigator.canShare?.({ files: [probe] })) {
+        $('share').hidden = false;
+        $('share').addEventListener('click', async () => {
+          const file = new File([await blob()], fileName(), { type: 'image/jpeg' });
+          try {
+            await navigator.share({ files: [file] });
+          } catch {
+            // Closing the share sheet rejects; nothing to do.
+          }
+        });
+      }
+
+      document.fonts.load('700 44px Geist').finally(render);
+    </script>
+  </body>
+</html>
