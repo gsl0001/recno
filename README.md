@@ -33,6 +33,18 @@ is no form on the site any more and `app.js` no longer collects an address — i
 signup ever comes back, disclose the processor in `docs/legal/privacy-policy.md`
 and `site/privacy/index.html` before shipping it.
 
+## Short links `/a/` to `/9/`
+
+The 36 single-character folders are per-post short links. Each one is a static
+page that redirects at once (meta refresh, no JavaScript) to the App Store
+campaign link `?pt=129096683&ct=short-<char>`. Installs are then counted per
+character in App Store Connect's campaign analytics. Recno's own site records
+nothing. Give each post, flyer or reply its own character, and log the assignment
+in `marketing/campaign/short-links.md` in `gsl0001/sitelogs`, which says which
+post a character belongs to. The pages are `noindex` and are left out of the
+sitemap on purpose. `npm run site:check` fails if a copy points at another
+character's campaign.
+
 ## Screenshots must use invented data
 
 The page shows three real 1.1 screens as 600px WebP, with no CSS device frame:
