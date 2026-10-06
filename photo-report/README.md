@@ -1,6 +1,6 @@
 # Free photo report builder
 
-Public route: https://gsl0001.github.io/recno/photo-report/
+Public route: https://recno.app/photo-report/
 
 Self-contained browser tool: photos are decoded and resized locally, then embedded into PDF or JSON draft downloads. No photo upload, account, cloud save, or persistent browser storage. Download drafts before closing the tab. Libraries and fonts are self-hosted in vendor/ with license notices.
 

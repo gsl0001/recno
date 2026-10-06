@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gsl0001.github.io/recno/</loc>
+    <loc>https://recno.app/</loc>
   </url>
   <url>
-    <loc>https://gsl0001.github.io/recno/privacy/</loc>
+    <loc>https://recno.app/privacy/</loc>
   </url>
   <url>
-    <loc>https://gsl0001.github.io/recno/terms/</loc>
+    <loc>https://recno.app/terms/</loc>
   </url>
   <url>
-    <loc>https://gsl0001.github.io/recno/support/</loc>
+    <loc>https://recno.app/support/</loc>
   </url>
   <url>
-    <loc>https://gsl0001.github.io/recno/delete-data/</loc>
+    <loc>https://recno.app/delete-data/</loc>
   </url>
-  <url><loc>https://gsl0001.github.io/recno/photo-report/</loc></url>
-  <url><loc>https://gsl0001.github.io/recno/job-photo-checklist/</loc></url>
+  <url><loc>https://recno.app/photo-report/</loc></url>
+  <url><loc>https://recno.app/job-photo-checklist/</loc></url>
 </urlset>
 

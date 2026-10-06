@@ -1,6 +1,6 @@
 # Recno Static Site
 
-This repo is the deployed public website, served at `https://gsl0001.github.io/recno/` (repo `gsl0001/recno`, GitHub Pages). It is generated from `site/` in the private `gsl0001/sitelogs` repo; edit there and sync, do not hand-edit here. All internal links are relative so the site works from any host or subpath. Do not reference `sitelogs.app` — that domain belongs to a third party.
+This repo is the deployed public website, served at `https://recno.app/` (repo `gsl0001/recno`, GitHub Pages). It is generated from `site/` in the private `gsl0001/sitelogs` repo; edit there and sync, do not hand-edit here. All internal links are relative so the site works from any host or subpath. Do not reference `sitelogs.app` — that domain belongs to a third party.
 
 Deployment history: the site lived at `gsl0001.github.io/siteslog` (repo `gsl0001/siteslog`) until 2026-09-04, when it moved to `gsl0001/recno`. The old repo now serves instant redirects for every route because the shipped 1.0.0 binary (`src/constants/product.ts`) and the App Store Connect privacy/support/marketing URLs still point at `/siteslog/`. Retire those redirects only after 1.0.1 ships with the new links and ASC metadata is updated.
 

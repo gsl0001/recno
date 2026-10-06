@@ -17,11 +17,11 @@
 
 ## Pages
 
-- [Home](https://gsl0001.github.io/recno/): features, pricing, FAQ
-- [Free photo report tool](https://gsl0001.github.io/recno/photo-report/): make a PDF from photos in the browser, no account or upload
-- [Privacy policy](https://gsl0001.github.io/recno/privacy/): what leaves the device and when
-- [Support](https://gsl0001.github.io/recno/support/)
-- [Delete data](https://gsl0001.github.io/recno/delete-data/)
-- [Terms](https://gsl0001.github.io/recno/terms/)
+- [Home](https://recno.app/): features, pricing, FAQ
+- [Free photo report tool](https://recno.app/photo-report/): make a PDF from photos in the browser, no account or upload
+- [Privacy policy](https://recno.app/privacy/): what leaves the device and when
+- [Support](https://recno.app/support/)
+- [Delete data](https://recno.app/delete-data/)
+- [Terms](https://recno.app/terms/)
 
 Contact: gsl456789@gmail.com
